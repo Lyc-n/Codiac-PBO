@@ -1,0 +1,24 @@
+<CustomButton@MDCard+ButtonBehavior>:
+    custext: "Tombol"
+    clr: 1,1,1,1
+    bg: "assets/bgbtn.png"
+    size_hint_y: None
+    height: "48dp"
+    md_bg_color: 0, 0, 0, 0  # Agar background tidak tertutup warna MDCard
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1  # Putih full agar image tampil jelas
+        RoundedRectangle:
+            source: root.bg
+            pos: self.pos
+            size: self.size
+            radius: [24, 24, 24, 24]
+    MDLabel:
+        font_name: "Poppins"
+        text: root.custext
+        halign: "center"
+        valign: "center"
+        theme_text_color: "Custom"
+        text_color: root.clr
+        bold: True
+        

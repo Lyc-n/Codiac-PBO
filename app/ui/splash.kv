@@ -1,0 +1,17 @@
+<SplashScreen>:
+    name: "splash"
+
+    MDFloatLayout:
+        canvas.before:
+            Color: 
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                source: "assets/bg1.png"
+                pos: self.parent.pos
+                size: self.parent.size
+
+        
+        Image:
+            source:"assets/icon.png"
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            size_hint: 0.17, 0.17
