@@ -22,3 +22,57 @@
         text_color: root.clr
         bold: True
         
+<IconCategory@MDCard>:
+    cicon: "home"
+    orientations: "horizontal"
+    md_bg_color: 0.3,0.1,0.5,1
+    MDIconButton:
+        icon: root.cicon
+        size_hint: None,None
+        size: "24dp","24dp"
+        pos: self.pos
+
+<Course@MDCard+ButtonBehavior>:
+    orientations:"horizontal"
+    md_bg_color: 0,0,1,1
+    ctext: "none"
+    
+    MDBoxLayout:
+        orientation:"horizontal"
+        padding:24
+        adaptive_height:True
+        canvas.before:
+            Color:
+                rgba: 0, 0, 1, 1  
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [24, 24, 24, 24]
+        MDLabel:
+            text:"Materi C++ Dasar  "
+            size:self.size
+            halign: "left"
+            valign: "bottom"
+            font_size: "14sp"
+            font_name: "Poppins"
+            bold:True
+        
+        MDBoxLayout:
+            orientation: "horizontal"
+            adaptive_height:True
+            spacing: 24
+            MDLabel:
+                text: "Pemula"
+                font_name: "Inter"
+                font_size: "12sp"
+                halign: "right"
+                valign: "bottom"
+                size: self.size
+            
+            MDIcon:
+                icon:"alarm"
+                size_hint: None,None
+                font_size: "18sp"
+                pos: self.pos
+                
+        

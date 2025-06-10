@@ -1,0 +1,188 @@
+<HomeScreen>:
+    name: "home"
+    
+    MDFloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                source: "assets/bg1.png"
+                pos: self.parent.pos
+                size: self.parent.size
+
+    MDBoxLayout:
+        orientation:"vertical"
+        padding:12
+        spacing:24
+        
+        MDCard:
+            padding:24
+            spacing:48
+            orientation:"vertical"
+            md_bg_color:0,0,0,0
+            size_hint_y:0.6
+            MDBoxLayout:
+                orientation:"horizontal"
+                padding:[12,24,0,0]
+                adaptive_height:True
+                MDBoxLayout:
+                    orientation:"vertical"
+                    adaptive_height:True
+                    spacing:68
+                    MDLabel:
+                        text: "Selamat Datang"
+                        font_name: "Inter"
+                        font_size: "16sp"
+                        size:self.size
+                    MDLabel:
+                        text: root.getNameUser()
+                        font_name:"Poppins"
+                        font_size: "36sp"
+                        bold: True
+                        size:self.size
+                Widget:
+                MDIconButton:
+                    icon: "account"
+                    icon_size: "36sp"
+                    pos:self.pos
+                
+            MDCard:
+                md_bg_color:0.12,0.13,0.2,0.8
+                orientation: "vertical"
+                size_hint_y: 1
+                
+                MDBoxLayout:
+                    orientation:"horizontal"
+                    padding:24
+                    adaptive_height:True
+                    MDBoxLayout:
+                        orientation: "horizontal"
+                        adaptive_height:True
+                        
+                        MDIcon:
+                            icon:"fire"
+                            size_hint: None,None
+                            size: "24dp","24dp"
+                            pos: self.pos
+                            
+                        MDLabel:
+                            text: "Pemula"
+                            font_name: "Inter"
+                            font_size: "12sp"
+                            halign: "left"
+                            valign: "bottom"
+                            size: self.size
+                    
+                    MDLabel:
+                        text:"Materi C++ Dasar  "
+                        size:self.size
+                        halign: "right"
+                        valign: "bottom"
+                        font_size: "14sp"
+                        font_name: "Poppins"
+                        bold:True
+                        
+                MDBoxLayout:
+                    orientation:"horizontal"
+                    padding:24
+                    MDBoxLayout:
+                        orientation:"vertical"
+                        
+                        MDLabel:
+                            text:"Misi Harian"
+                            font_name:"Poppins"
+                            font_style: "H4"
+                            bold:True
+                            size:self.size
+                        MDLabel:
+                            text:"telah tersedia !"
+                            font_size: "16sp"
+                            font_name: "Inter"
+                            self: self.size
+                        Widget
+                        
+                    MDIconButton:
+                        icon: "arrow-right"
+                        size_hint: None,None
+                        size: "24dp","24dp"
+                        pos: self.pos
+                        
+        MDBoxLayout:
+            adaptive_height:True
+            padding:12
+            spacing: 42
+            orientation: "vertical"
+            MDLabel:
+                text:"Bahasa Pemrograman"
+                font_name:"Poppins"
+                font_size: "18sp"
+                bold:True
+                valign:"top"
+                size: self.size
+            MDBoxLayout:
+                orientation: "horizontal"
+                size_hint_y: None
+                height: "48dp"
+                ScrollView:
+                    do_scroll_x: True
+                    do_scroll_y: False
+                    orientation: "horizontal"
+                    bar_width:0
+                    MDBoxLayout: 
+                        spacing: 150
+                        padding:[0,0,86,0]
+                        size_hint_x: None
+                        width: self.minimum_width
+                        IconCategory:
+                            cicon: "language-python"
+                        IconCategory:
+                            cicon: "language-javascript"
+                        IconCategory:
+                            cicon: "language-java"
+                        IconCategory:
+                            cicon: "language-cpp"
+                        IconCategory:
+                            cicon: "language-c"
+                        IconCategory:
+                            cicon: "language-csharp"
+                        IconCategory:
+                            cicon: "language-php"
+                        IconCategory:
+                            cicon: "language-html5"
+                        IconCategory:
+                            cicon: "language-css3"
+                        IconCategory:
+                            cicon: "language-typescript"
+                        IconCategory:
+                            cicon: "language-go"
+                        IconCategory:
+                            cicon: "language-rust"
+                
+        MDBoxLayout:
+            padding:12
+            spacing: 0
+            orientation: "vertical"
+            MDLabel:
+                text:"Course"
+                font_name:"Poppins"
+                font_size: "18sp"
+                bold:True
+                valign:"top"
+                size_hint_y:None
+                height: self.texture_size[1]
+            ScrollView:
+                do_scroll_x: False
+                do_scroll_y: True
+                orientation: "vertical"
+                size_hint_y:1
+                MDBoxLayout: 
+                    spacing: 100
+                    padding:[0,86,0,0]
+                    adaptive_height:True
+                    orientation: "vertical"
+                    Course
+                    Course
+                    Course
+                    Course
+                    Course
+    MDTopAppBar

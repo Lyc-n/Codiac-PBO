@@ -34,8 +34,3 @@ class RegisterScreen(MDScreen):
       from kivy.app import App
       return App.get_running_app()
       
-    def check(self, checkbox, value):
-        if value:
-            self.ids.status.text = "centang..."
-        else:
-            self.ids.status.text = "blom..."
