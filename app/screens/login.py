@@ -18,6 +18,8 @@ class LoginScreen(MDScreen):
         
         if AuthDB().login_user(username, password):
             self.ids.status.text = "Login berhasil!"
+            app = self.get_app()
+            app.go_to_home()
         else:
             self.ids.status.text = "Login gagal. Coba lagi."
             
@@ -27,7 +29,6 @@ class LoginScreen(MDScreen):
             "username": username,
             "is_logged_in": True
         }
-        
         with open("data/session.json", "w") as f:
             json.dump(data, f, indent=4)  
             
@@ -36,6 +37,14 @@ class LoginScreen(MDScreen):
             "username": username,
             "is_logged_in": False
         }
-        
         with open("data/session.json", "w") as f:
-            json.dump(data, f, indent=4)  
+            json.dump(data, f, indent=4)
+      
+    def do_log(self):
+        self.ids.status.text = "Balik ke login"
+        app = self.get_app()
+        app.go_to_login(dt=None)
+      
+    def get_app(self):
+        from kivy.app import App
+        return App.get_running_app()

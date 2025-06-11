@@ -16,9 +16,7 @@ Builder.load_file("app/components/custombtn.kv")
 
 #Global Variable 
 logsess = Path("data/session.json")
-primary = get_color_from_hex("#4408AD")
-light = get_color_from_hex("#C3BDCE")
-dark = get_color_from_hex("#1D162A")
+
 
 class MainApp(MDApp):
     def build(self):
@@ -40,13 +38,17 @@ class MainApp(MDApp):
     def go_to_login(self, dt):
         log = self.check_session()
         if log:
-            self.sm.current = "home"
+            self.go_to_home()
         else: 
             self.sm.current = "login"
     
     #Pindah ke RegisterPage
     def go_to_reg(self):
         self.sm.current = "register"
+    
+    #Pindah ke HomePage
+    def go_to_home(self):
+        self.sm.current = "home"
         
     #Cek Sessions untuk AutoLogin
     def check_session(self):
@@ -70,6 +72,11 @@ class MainApp(MDApp):
         fn_regular= "assets/fonts/Inter-VariableFont_opsz,wght.ttf",
         fn_italic= "assets/fonts/Inter-Italic-VariableFont_opsz,wght.ttf",
         )
+    
+    #Deklarasi Warna Custom
+    satu = get_color_from_hex("#191A29")
+    light = get_color_from_hex("#C3BDCE")
+    dark = get_color_from_hex("#1D162A")
     
 if __name__ == '__main__':
     MainApp().run()
