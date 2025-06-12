@@ -3,7 +3,7 @@
     clr: 1,1,1,1
     bg: "assets/bgbtn.png"
     size_hint_y: None
-    height: "48dp"
+    height: root.width/9
     md_bg_color: 0, 0, 0, 0  # Agar background tidak tertutup warna MDCard
     canvas.before:
         Color:
@@ -29,21 +29,23 @@
     MDIconButton:
         icon: root.cicon
         size_hint: None,None
-        size: "24dp","24dp"
+        icon_size: root.width/3
         pos: self.pos
+        on_release: app.show_snackbar()
 
 <Course@MDCard+ButtonBehavior>:
     orientations:"horizontal"
     md_bg_color: 0,0,1,1
     ctext: "none"
-    
+    on_release: app.show_snackbar()
     MDBoxLayout:
         orientation:"horizontal"
-        padding:28
+        padding:root.width/26
         adaptive_height:True
+        disabled: True
         canvas.before:
             Color:
-                rgba: 0.12,0.13,0.2,0.8
+                rgba: 0.1,0.1,0.2,1
             RoundedRectangle:
                 pos: self.pos
                 size: self.size
@@ -51,37 +53,81 @@
         MDBoxLayout:
             orientation: "vertical"
             adaptive_height:True
-            spacing: 2
+            spacing: root.width/80
+            disabled:True
             MDLabel:
                 text:"Pengenalan"
                 size_hint_y:None
                 height: self.texture_size[1]
                 halign: "left"
                 valign: "bottom"
-                font_size: "14sp"
+                font_size: root.width/32
                 font_name: "Poppins"
-                
+                disabled: True
             MDLabel:
-                text:"pengenalan materi dan teori dasar c++"
+                text:"pengenalan materi dan teori masih belum tersedia"
                 size_hint_y:None
                 height: self.texture_size[1]
                 halign: "left"
                 valign: "bottom"
-                font_size: "10sp"
+                font_size: root.width/45
                 font_name: "Inter"
                 theme_text_color: "Hint"
-                
+                disabled:True
         Widget
         MDLabel:
             text: "Pemula"
             font_name: "Inter"
-            font_size: "12sp"
+            font_size: root.width/37
             halign: "right"
             valign: "bottom"
             size_hint_x:None
-                
+            disabled: True
+<MoreCourse@MDCard+ButtonBehavior>:
+    orientations:"horizontal"
+    md_bg_color: 0,0,1,1
+    ctext: "none"
+    
+    MDBoxLayout:
+        orientation:"horizontal"
+        padding:root.width/18
+        adaptive_height:True
+        canvas.before:
+            Color:
+                rgba: 0.1,0.1,0.2,1
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [24, 24, 24, 24]
+        MDLabel:
+            text: "Cari yang lain"
+            font_name: "Poppins"
+            font_size: root.width/23
+            size:self.size
+            valign:"middle"
+            halign: "center"
+            size_hint_y:None
+            height: root.width/15
             
-            
-                  
-                
-        
+<Navbar@MDBoxLayout>:
+    id: navbar
+    orientation: "horizontal"
+    size_hint_y: None
+    height: "50dp"
+    md_bg_color: 0.12,0.13,0.2,1
+    MDIconButton:
+        icon:"home"
+        size_hint: 1,1
+        on_release: app.change_screen("home")
+    MDIconButton:
+        icon:"bookmark"
+        size_hint: 1,1
+        on_release: app.change_screen("bookmark")
+    MDIconButton:
+        icon:"timer"
+        size_hint: 1,1
+        on_release: app.change_screen("timer")
+    MDIconButton:
+        icon:"account"
+        size_hint: 1,1
+        on_release: app.change_screen("home")

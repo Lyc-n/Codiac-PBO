@@ -13,76 +13,99 @@
     MDBoxLayout:
         orientation: "vertical"
         padding: 12
-        spacing: 24
+        spacing: root.width/20
         
-        MDFloatLayout:
+        MDBoxLayout:
+            orientation: "vertical"
+            adaptive_height:True
             Image:
                 source: "assets/icontext.png"
-                pos_hint: {"center_x": 0.5, "center_y": 0.55}
-                size_hint: 1,1
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                size_hint: None, None
+                size: root.width/3, root.width/3
                 
             MDLabel:
                 font_name: "Poppins"
                 text: "Silahkan masukkan data diri anda"
-                pos_hint: {"center_x": 0.5, "center_y": 0.3}
                 halign: "center"
                 theme_text_color: "Custom"
-                text_color: 1, 1, 1, 1
-                font_style: "Body1"
-      
-        MDTextField:
-            id: username
-            hint_text: "    Username"
-            icon_right: "account"
-            mode: "rectangle"
-            radius: [24, 24, 24, 24]
-        
-        MDTextField:
-            id: email
-            hint_text: "    Email"
-            icon_right: "email"
-            mode: "rectangle"
-            radius: [24, 24, 24, 24]
-        
-        MDTextField:
-            id: password
-            hint_text: "    Password"
-            icon_right: "lock"
-            password: True
-            mode: "rectangle"
-            radius: [24, 24, 24, 24]
-        
+                text_color: 0.9,0.9, 1, 1
+                font_size: root.width/27
+
+        Widget:
+            size_hint_y: None
+            height: root.width/70
+
         MDBoxLayout:
-            size_hint: None, None
-            adaptive_height: True
-            orientation: "vertical"
-            size_hint_x: 1
-            spacing: 18
+            orientation:"vertical"
+            adaptive_height:True
             MDTextField:
-                id: cpassword
-                hint_text: "    Confirm Password"
-                password: True
-                icon_right: "lock"
+                id: username
+                hint_text: "    Username"
+                icon_right: "account"
                 mode: "rectangle"
+                size_hint_y: None
+                height: root.width/8
+                font_size: root.width/30
                 radius: [24, 24, 24, 24]
+            
+            MDTextField:
+                id: email
+                hint_text: "    Email"
+                icon_right: "email"
+                mode: "rectangle"
+                size_hint_y: None
+                height: root.width/8
+                font_size: root.width/30
+                radius: [24, 24, 24, 24]
+            
+            MDTextField:
+                id: password
+                hint_text: "    Password"
+                icon_right: "lock"
+                password: True
+                mode: "rectangle"
+                size_hint_y: None
+                height: root.width/8
+                font_size: root.width/30
+                radius: [24, 24, 24, 24]
+            
             MDBoxLayout:
-                orientation: "horizontal"
+                size_hint: None, None
                 adaptive_height: True
-                spacing: 8
-                MDCheckbox:
-                    id: checkBox_terms
-                    size_hint: None, None
-                    size: "24dp","24dp"
-                    
-                MDLabel:
-                    text: "saya menyetujui syarat & ketentuan"
-                    font_name: "Poppins"
-                    halign: "left"
-                    valign: "middle"
-                    font_size: "12sp"
-                    theme_text_color: "Custom"
-                    text_color: 0.6,0.6,0.6,1
-                
+                orientation: "vertical"
+                size_hint_x: 1
+                spacing: root.width/40
+                MDTextField:
+                    id: cpassword
+                    hint_text: "    Confirm Password"
+                    password: True
+                    icon_right: "lock"
+                    mode: "rectangle"
+                    size_hint_y: None
+                    height: root.width/8
+                    font_size: root.width/30
+                    radius: [24, 24, 24, 24]
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    adaptive_height: True
+                    spacing: 8
+                    MDCheckbox:
+                        id: checkBox_terms
+                        size_hint: None, None
+                        size: "24dp","24dp"
+                        
+                    MDLabel:
+                        text: "saya menyetujui syarat & ketentuan"
+                        font_name: "Poppins"
+                        halign: "left"
+                        valign: "middle"
+                        font_size: "12sp"
+                        theme_text_color: "Custom"
+                        text_color: 0.6,0.6,0.6,1
+        Widget:
+            size_hint_y: None
+            height: root.width/56
         CustomButton:
             custext: "Sign Up"
             on_release: root.do_reg()

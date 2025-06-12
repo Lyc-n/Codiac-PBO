@@ -23,7 +23,7 @@ class LoginScreen(MDScreen):
         else:
             self.ids.status.text = "Login gagal. Coba lagi."
             
-    #Agar tidak perlu login berulang
+    #Buat Login Session
     def log_session(self, username):
         data = {
             "username": username,
@@ -31,7 +31,8 @@ class LoginScreen(MDScreen):
         }
         with open("data/session.json", "w") as f:
             json.dump(data, f, indent=4)  
-            
+    
+    #Login tanpa session
     def not_log_session(self, username):
         data = {
             "username": username,
@@ -39,11 +40,6 @@ class LoginScreen(MDScreen):
         }
         with open("data/session.json", "w") as f:
             json.dump(data, f, indent=4)
-      
-    def do_log(self):
-        self.ids.status.text = "Balik ke login"
-        app = self.get_app()
-        app.go_to_login(dt=None)
       
     def get_app(self):
         from kivy.app import App

@@ -13,66 +13,76 @@
     MDBoxLayout:
         orientation: "vertical"
         padding: 12
-        spacing: 24
-        
-        MDFloatLayout:
+        spacing: root.width/10
+        MDBoxLayout:
+            orientation: "vertical"
+            adaptive_height:True
             Image:
                 source: "assets/icontext.png"
-                pos_hint: {"center_x": 0.5, "center_y": 0.55}
-                size_hint: 1,1
-                
+                size_hint: None, None
+                size: root.width/3, root.width/3
+                pos_hint: {"center_x":0.5, "center_y":0.5}
             MDLabel:
                 font_name: "Poppins"
                 text: "Silahkan masukkan akun anda"
-                pos_hint: {"center_x": 0.5, "center_y": 0.3}
                 halign: "center"
+                valign: "top"
                 theme_text_color: "Custom"
-                text_color: 1, 1, 1, 1
-                font_style: "Body1"
+                text_color: 0.9, 0.9, 1, 1
+                font_size: root.width / 27
+                size: self.size
       
-        MDTextField:
-            id: username
-            hint_text: "    Username"
-            icon_right: "account"
-            mode: "rectangle"
-            radius: [24, 24, 24, 24]
-        
         MDBoxLayout:
-            size_hint: None, None
-            adaptive_height: True
-            orientation: "vertical"
-            size_hint_x: 1
-            spacing: 18
+            orientation:"vertical"
+            adaptive_height:True
             MDTextField:
-                id: password
-                hint_text: "    Password"
-                password: True
-                icon_right: "lock"
+                id: username
+                hint_text: "    Username"
+                icon_right: "account"
                 mode: "rectangle"
+                size_hint_y: None
+                height: root.width/8
+                font_size: root.width/30
                 radius: [24, 24, 24, 24]
+            
             MDBoxLayout:
-                orientation: "horizontal"
+                size_hint: None, None
                 adaptive_height: True
-                spacing: 8
-                MDCheckbox:
-                    id: checkBox_terms
-                    size_hint: None, None
-                    size: "24dp","24dp"
-                    
-                MDLabel:
-                    text: "ingat saya"
-                    font_name: "Poppins"
-                    halign: "left"
-                    valign: "middle"
-                    font_size: "12sp"
-                    theme_text_color: "Custom"
-                    text_color: 0.6,0.6,0.6,1
+                orientation: "vertical"
+                size_hint_x: 1
+                spacing: 18
+                MDTextField:
+                    id: password
+                    hint_text: "    Password"
+                    password: True
+                    icon_right: "lock"
+                    mode: "rectangle"
+                    height: root.width/8
+                    font_size: root.width/30
+                    radius: [24, 24, 24, 24]
+                MDBoxLayout:
+                    orientation: "horizontal"
+                    adaptive_height: True
+                    spacing: 8
+                    MDCheckbox:
+                        id: checkBox_terms
+                        size_hint: None, None
+                        size: "24dp","24dp"
+                        
+                    MDLabel:
+                        text: "ingat saya"
+                        font_name: "Poppins"
+                        halign: "left"
+                        valign: "middle"
+                        font_size: "12sp"
+                        theme_text_color: "Custom"
+                        text_color: 0.6,0.6,0.6,1
     
         MDBoxLayout:
             adaptive_height: True
             orientation: "vertical"
-            spacing: 24
-            padding: [0,56,0,0]
+            spacing: root.width/35
+            padding: [0,root.width/40,0,0]
             
             CustomButton:
                 custext: "Login"
