@@ -107,7 +107,7 @@
                         size_hint: None,None
                         font_size: root.width/35
                         pos: self.pos
-                        on_release: app.change("course")
+                        on_release: app.change("course_i")
                         
         MDBoxLayout:
             adaptive_height:True
@@ -180,7 +180,7 @@
                     do_scroll_y:True
                     MDBoxLayout: 
                         spacing: "12dp"
-                        padding:[0,root.width/25,0,0]
+                        padding:[0,root.width/25,0,"36dp"]
                         adaptive_height:True
                         orientation: "vertical"
                         Course
@@ -188,6 +188,8 @@
                         Course
                         Course
                         Course
-                        MoreCourse
+                        CustomButton:
+                            custext: "tes kemampuan"
+                            on_release: app.show_snackbar()
 
     

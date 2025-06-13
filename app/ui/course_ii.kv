@@ -1,0 +1,87 @@
+<CourseScreen_ii>:
+    name: "course_ii"
+    
+    MDFloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                source: "assets/bg1.png"
+                pos: self.parent.pos
+                size: self.parent.size
+        
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: root.width/25
+        spacing: root.width/25
+        MDLabel:
+            text: "Pengenalan C++"
+            font_size: root.width/18
+            font_name: "Poppins"
+            bold: True
+            size: self.size
+            halign: "center"
+            size_hint_y: None
+            height:self.texture_size[1]
+
+        MDBoxLayout:
+            orientation:"vertical"
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: root.width/15
+                MDCard:
+                    orientation: "vertical"
+                    MDBoxLayout:
+                        padding: "24dp"
+                        MDLabel:
+                            text: "[size=36][b]Apa itu C++?[/b][/size]\n\nC++ adalah salah satu bahasa pemrograman yang populer dan banyak digunakan untuk pengembangan aplikasi, game, sistem operasi, dan perangkat lunak lainnya. Bahasa ini merupakan pengembangan dari bahasa C, dengan tambahan fitur seperti pemrograman berorientasi objek (OOP).\n\n,[size=36][b]Kenapa Belajar C++?[/b][/size]\n\n[b]Cepat dan Efisien[/b]: C++ dikenal sebagai bahasa yang cepat dan cocok untuk aplikasi yang membutuhkan performa tinggi.\n[b]Fleksibel[/b]: Bisa digunakan untuk berbagai jenis aplikasi, mulai dari game hingga software kompleks.Fondasi \n[b]Pemrograman[/b]: Banyak konsep dasar pemrograman yang bisa dipelajari melalui C++."
+                            font_name: "Poppins"
+                            font_size: "12sp"
+                            markup: True
+                            size_hint_y:None
+                            height: self.texture_size[1]
+                        
+                    MDCard:
+                        orientation: "horizontal"
+                        md_bg_color: 0,0,0,0
+                        size_hint_y: None
+                        height: "32dp"
+                        padding: "10dp"
+                        canvas.before:
+                            Color: 
+                                rgba: 1,1,1,1
+                            RoundedRectangle:
+                                source: "assets/bgbtn2.png"
+                                pos: self.pos
+                                size:self.size
+                                radius: [0, 0, 24, 24]
+                        MDBoxLayout:
+                            spacing: "8dp"
+                            Widget:
+                            MDCard:
+                                size_hint: None, None
+                                size: "12dp","12dp"
+                                md_bg_color: 0,0.3,1,1
+                            MDCard:
+                                size_hint: None, None
+                                size: "12dp","12dp"
+                                md_bg_color: 0,1,0,1
+                            MDCard:
+                                size_hint: None, None
+                                size: "12dp","12dp"
+                                md_bg_color: 1,1,0,1
+                            MDCard:
+                                size_hint: None, None
+                                size: "12dp","12dp"
+                                md_bg_color: 1,0,0,1
+                        
+                        
+                MDCard:
+                    MDLabel:
+                        text: "lorem ipsum dolor sit amet."
+                        font_name: "CourierPrime"
+                        font_size: root.width/25
+    MDBoxLayout:
+        padding:"32dp"
+        CustomButton:
+            custext: "next"
