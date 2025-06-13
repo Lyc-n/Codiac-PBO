@@ -17,6 +17,16 @@ class HomeScreen(MDScreen):
             uname = "user"
             return uname
     
+    def getBahasa(self):
+        if logsess.exists():
+            with open("data/session.json", "r") as f:
+                data = json.load(f)
+                bhs = data.get("bahasa")
+            return bhs
+        else:
+            bhs = "c++"
+            return bhs
+    
     def search(self):
         pass
     

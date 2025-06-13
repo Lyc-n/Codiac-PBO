@@ -1,0 +1,91 @@
+<PilihCourse>:
+    name: "pilihcourse"
+    
+    MDFloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                source: "assets/bg1.png"
+                pos: self.parent.pos
+                size: self.parent.size
+
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: root.width/30
+        MDLabel:
+            text: "Pilih Bahasa\nPemrograman"
+            font_size: root.width/18
+            font_name: "Poppins"
+            bold: True
+            size: self.size
+            halign: "center"
+            size_hint_y: None
+            height:self.texture_size[1]
+
+        MDBoxLayout:
+            orientation:"vertical"
+            padding: root.width/76
+
+            ScrollView:
+                do_scroll_x: False
+                do_scroll_y: True
+                MDBoxLayout:
+                    orientation: "vertical"
+                    spacing: root.width/60  
+                    size_hint_y: None
+                    height: root.height/1
+                    MDLabel:
+                        text:"Bahasa pemrograman utama"
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        size: self.size
+                        halign: "left"
+                        font_name: "Inter"
+                        font_size: root.width/30
+                    PilihBahasa:
+                        on_release: app.bahasa("java")
+                    PilihBahasa:
+                        source: "assets/course2.png"
+                        on_release: app.bahasa("python")
+                    PilihBahasa:
+                        source: "assets/course3.png"
+                        on_release: app.bahasa("c++")
+                    PilihBahasa:
+                        source: "assets/course4.png"
+                        on_release: app.bahasa("javascript")
+                    MDLabel:
+                        text:"Bahasa pemrograman web"
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        size: self.size
+                        halign: "left"
+                        font_name: "Inter"
+                        font_size: root.width/30
+                    PilihBahasa:
+                        source: "assets/course5.png"
+                        on_release: app.bahasa("html/css")
+                        
+                    PilihBahasa:
+                        source: "assets/course6.png"
+                        on_release: app.bahasa("php")
+                    PilihBahasa:
+                        source: "assets/course7.png"
+                        on_release: app.bahasa("ruby")
+                    MDLabel:
+                        text:"Bahasa pemrograman mobile"
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        size: self.size
+                        halign: "left"
+                        font_name: "Inter"
+                        font_size: root.width/30
+                    PilihBahasa:
+                        source: "assets/course8.png"
+                        on_release: app.bahasa("swift")
+                    PilihBahasa:
+                        source: "assets/course9.png"
+                        on_release: app.bahasa("kotlin")
+                    PilihBahasa:
+                        source: "assets/course10.png"
+                        on_release: app.bahasa("react native")

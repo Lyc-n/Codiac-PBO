@@ -27,7 +27,7 @@
                 MDBoxLayout:
                     orientation:"vertical"
                     adaptive_height:True
-                    spacing: root.width / 20
+                    spacing: root.width / 18
                     MDLabel:
                         text: "Selamat Datang"
                         font_name: "Inter"
@@ -42,7 +42,8 @@
                 MDIconButton:
                     icon: "account"
                     icon_size: root.width /15
-                    pos_hint: {"center_x":1,"center_y":0.5}   
+                    pos_hint: {"center_x":1,"center_y":0.5}
+                    size: self.size
                 Widget:
                     size_hint_x:None
                     width: root.width/35
@@ -75,7 +76,7 @@
                             size: self.size
                     
                     MDLabel:
-                        text:"Materi C++ Dasar  "
+                        text:f"Materi {root.getBahasa()} Dasar  "
                         size:self.size
                         halign: "right"
                         valign: "bottom"
@@ -106,6 +107,7 @@
                         size_hint: None,None
                         font_size: root.width/35
                         pos: self.pos
+                        on_release: app.change("course")
                         
         MDBoxLayout:
             adaptive_height:True
@@ -118,49 +120,47 @@
                 font_size: root.width/25
                 bold:True
                 valign:"top"
+                size_hint_y: None
+                height: self.texture_size[1]
                 size: self.size
             MDBoxLayout:
                 orientation: "horizontal"
                 size_hint_y: None
-                height: root.height/13
+                height: "58dp"
                 ScrollView:
                     do_scroll_x: True
                     do_scroll_y: False
                     orientation: "horizontal"
                     bar_width:0
                     MDBoxLayout: 
-                        spacing: root.height/15
+                        spacing: "24dp"
                         padding:[0,0,86,0]
                         size_hint_x: None
                         width: self.minimum_width
                         IconCategory:
-                            cicon: "language-python"
+                            cicon: "assets/python.png"
                         IconCategory:
-                            cicon: "language-javascript"
+                            cicon: "assets/javascript.png"
                         IconCategory:
-                            cicon: "language-java"
+                            cicon: "assets/java.png"
                         IconCategory:
-                            cicon: "language-cpp"
+                            cicon: "assets/c++.png"
                         IconCategory:
-                            cicon: "language-c"
+                            cicon: "assets/kotlin.png"
                         IconCategory:
-                            cicon: "language-csharp"
+                            cicon: "assets/html.png"
                         IconCategory:
-                            cicon: "language-php"
+                            cicon: "assets/php.png"
                         IconCategory:
-                            cicon: "language-html5"
+                            cicon: "assets/reactnative.png"
                         IconCategory:
-                            cicon: "language-css3"
+                            cicon: "assets/ruby.png"
                         IconCategory:
-                            cicon: "language-typescript"
-                        IconCategory:
-                            cicon: "language-go"
-                        IconCategory:
-                            cicon: "language-rust"
+                            cicon: "assets/swift.png"
                 
         MDBoxLayout:
             padding:root.width/23 
-            spacing: 0
+            spacing: "8"
             orientation: "vertical"
             MDLabel:
                 text:"Course"
@@ -179,8 +179,8 @@
                     do_scroll_x:False
                     do_scroll_y:True
                     MDBoxLayout: 
-                        spacing: root.width/5
-                        padding:[0,root.width/4,0,0]
+                        spacing: "12dp"
+                        padding:[0,root.width/25,0,0]
                         adaptive_height:True
                         orientation: "vertical"
                         Course
@@ -190,4 +190,4 @@
                         Course
                         MoreCourse
 
-    Navbar
+    

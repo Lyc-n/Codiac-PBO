@@ -9,10 +9,9 @@ from kivymd.uix.button import MDFlatButton
 from app.screens.login import LoginScreen
 from app.screens.register import RegisterScreen
 from app.screens.splash import SplashScreen
-from app.screens.home import HomeScreen
-from app.screens.timer import TimerScreen
-from app.screens.bookmark import BookmarkScreen
-# from root import Root
+from app.screens.course import CourseScreen
+from app.screens.pilihcourse import PilihCourse
+from layoutbase import LayoutBase
 from kivy.core.window import Window
 from pathlib import Path
 import json
@@ -37,17 +36,14 @@ class MainApp(MDApp):
         self.load_font()
         self.theme_cls.primary_palette = "Indigo"
         self.theme_cls.theme_style = "Dark" 
-        # Builder.load_file("app/components/custombtn.kv")
-        # Builder.load_file("root.kv")
 
         self.sm = ScreenManager()
         self.sm.add_widget(SplashScreen(name="splash"))
         self.sm.add_widget(LoginScreen(name="login"))
         self.sm.add_widget(RegisterScreen(name="register"))
-        # self.sm.add_widget(Root(name="root"))
-        self.sm.add_widget(HomeScreen(name="home"))
-        self.sm.add_widget(BookmarkScreen(name="bookmark"))
-        self.sm.add_widget(TimerScreen(name="timer"))
+        self.sm.add_widget(CourseScreen(name="course"))
+        self.sm.add_widget(PilihCourse(name="pilihcourse"))
+        self.sm.add_widget(LayoutBase(name="layoutbase"))
         Clock.schedule_once(self.go_to_login, 4)
 
         return self.sm
@@ -56,7 +52,7 @@ class MainApp(MDApp):
     def go_to_login(self, dt):
         log = self.check_session()
         if log:
-            self.sm.current = "home"
+            self.sm.current = "layoutbase"
         else: 
             self.sm.current = "login"
     
@@ -66,7 +62,11 @@ class MainApp(MDApp):
     
     #Pindah ke HomePage
     def go_to_home(self):
-        self.sm.current = "home"
+        self.sm.current = "layoutbase"
+        
+    #Pindah ke pilih
+    def go_to_pilih(self):
+        self.sm.current = "pilihcourse"
         
     #Cek Sessions untuk AutoLogin
     def check_session(self):
@@ -77,9 +77,25 @@ class MainApp(MDApp):
             return log_true
         else:
             return False
+    
+    def bahasa(self, pilih):
+        if logsess.exists():
+            with open(logsess, "r") as f:
+                data = json.load(f)
+                
+            data["bahasa"]= pilih
+            
+            with open(logsess, "w") as f:
+                json.dump(data, f, indent=4)
+            self.go_to_home()
+        else:
+            return
         
+    def change(self, changeS):
+        self.sm.current = changeS
+    
     def change_screen(self, screen_name):
-        self.sm.current = screen_name
+        MDApp.get_running_app().root.get_screen("layoutbase").ids.screen_manager.current = screen_name
 
     def show_snackbar(self):
         dialog = MDDialog(
@@ -105,6 +121,11 @@ class MainApp(MDApp):
         fn_regular= "assets/fonts/Inter-VariableFont_opsz,wght.ttf",
         fn_italic= "assets/fonts/Inter-Italic-VariableFont_opsz,wght.ttf",
         )
+      LabelBase.register(
+        name="CourierPrime",
+        fn_regular="assets/fonts/CourierPrime-Regular.ttf",
+        fn_bold="assets/fonts/CourierPrime-Bold.ttf",
+      )
     
     
 if __name__ == '__main__':

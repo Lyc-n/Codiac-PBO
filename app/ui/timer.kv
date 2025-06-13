@@ -1,22 +1,93 @@
 <TimerScreen>:
     name: "timer"
-    
+
     MDFloatLayout:
         canvas.before:
             Color:
                 rgba: 1,1,1,1
             Rectangle:
                 source: "assets/bg1.png"
-                pos: self.parent.pos
-                size: self.parent.size
-    MDBoxLayout:
-        MDLabel:
-            text: "Fitur Timer \n Belum Tersedia"
-            pos_hint: {"center_x": 0.5,"center_y": 0.5}
-            font_size: root.width/18
-            font_name: "Poppins"
-            bold: True
-            size: self.size
-            halign: "center"
+                pos: self.pos
+                size: self.size
+
+        MDBoxLayout:
+            orientation: 'vertical'
+            spacing: dp(20)
+            padding: dp(30)
+            size_hint: 0.9, 0.85
+            pos_hint: {"center_x": 0.5, "top": 0.95}
+
+            
+            MDLabel:
+                text: "Timer"
+                font_style: "H4"
+                halign: "center"
+                theme_text_color: "Primary"
+                bold: True
+
+            MDLabel:
+                text: "Atur timer untuk pengingat dan manajemen waktu anda saat mempelajari materi"
+                font_style: "Body1"
+                halign: "center"
+                theme_text_color: "Secondary"
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(50)
+                spacing: dp(10)
+
+                MDDropDownItem:
+                    id: hour_picker
+                    text: root.hour_text
+                    on_release: root.hour_menu.open()
+
+                MDDropDownItem:
+                    id: minute_picker
+                    text: root.minute_text
+                    on_release: root.minute_menu.open()
+
+                MDDropDownItem:
+                    id: second_picker
+                    text: root.second_text
+                    on_release: root.second_menu.open()
+
+
+            MDCard:
+                size_hint_y: None
+                height: dp(100)
+                md_bg_color: 0.2, 0.2, 0.2, 1
+                radius: [20]
+                padding: dp(20)
+                MDLabel:
+                    text: root.time_display
+                    halign: "center"
+                    font_style: "H3"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    bold: True
+
+            MDRaisedButton:
+                text: "Start"
+                on_release: root.start_timer()
+                md_bg_color: 0.2, 0.2, 0.2, 1
+                text_color: 1, 1, 1, 1
+                size_hint_y: None
+                height: dp(50)
+
+            MDRaisedButton:
+                text: "Stop"
+                on_release: root.stop_timer()
+                md_bg_color: 0.2, 0.2, 0.2, 1
+                text_color: 1, 1, 1, 1
+                size_hint_y: None
+                height: dp(50)
+
+            MDRaisedButton:
+                text: "Reset"
+                on_release: root.reset_timer()
+                md_bg_color: 0.2, 0.2, 0.2, 1
+                text_color: 1, 1, 1, 1
+                size_hint_y: None
+                height: dp(50)
 
     Navbar

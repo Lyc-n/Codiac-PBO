@@ -22,27 +22,30 @@
         text_color: root.clr
         bold: True
         
-<IconCategory@MDCard>:
-    cicon: "home"
-    orientations: "horizontal"
-    md_bg_color: 0.3,0.1,0.5,1
-    MDIconButton:
-        icon: root.cicon
-        size_hint: None,None
-        icon_size: root.width/3
-        pos: self.pos
-        on_release: app.show_snackbar()
+<IconCategory@ButtonBehavior+Image>:
+    cicon: "assets/java.png"
+    source: root.cicon
+    size_hint: None, None
+    size: "48dp", "48dp"
+    pos: self.pos
+    on_release: app.show_snackbar()
+    
+<PilihBahasa@ButtonBehavior+Image>:
+    sc: "assets/course1.png"
+    source: root.sc
+    size: self.size
 
 <Course@MDCard+ButtonBehavior>:
-    orientations:"horizontal"
+    orientation:"horizontal"
     md_bg_color: 0,0,1,1
     ctext: "none"
     on_release: app.show_snackbar()
+    size_hint_y: None
+    height: self.minimum_height
     MDBoxLayout:
         orientation:"horizontal"
         padding:root.width/26
         adaptive_height:True
-        disabled: True
         canvas.before:
             Color:
                 rgba: 0.1,0.1,0.2,1
@@ -54,7 +57,6 @@
             orientation: "vertical"
             adaptive_height:True
             spacing: root.width/80
-            disabled:True
             MDLabel:
                 text:"Pengenalan"
                 size_hint_y:None
@@ -63,7 +65,6 @@
                 valign: "bottom"
                 font_size: root.width/32
                 font_name: "Poppins"
-                disabled: True
             MDLabel:
                 text:"pengenalan materi dan teori masih belum tersedia"
                 size_hint_y:None
@@ -73,7 +74,6 @@
                 font_size: root.width/45
                 font_name: "Inter"
                 theme_text_color: "Hint"
-                disabled:True
         Widget
         MDLabel:
             text: "Pemula"
@@ -82,9 +82,10 @@
             halign: "right"
             valign: "bottom"
             size_hint_x:None
-            disabled: True
+            theme_text_color: "Hint"
+            
 <MoreCourse@MDCard+ButtonBehavior>:
-    orientations:"horizontal"
+    orientation:"horizontal"
     md_bg_color: 0,0,1,1
     ctext: "none"
     
@@ -131,3 +132,5 @@
         icon:"account"
         size_hint: 1,1
         on_release: app.change_screen("home")
+
+        

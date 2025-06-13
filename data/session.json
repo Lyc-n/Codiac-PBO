@@ -1,4 +1,5 @@
 {
     "username": "Admin",
-    "is_logged_in": true
+    "is_logged_in": true,
+    "bahasa": "javascript"
 }

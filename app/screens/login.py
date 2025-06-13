@@ -19,7 +19,7 @@ class LoginScreen(MDScreen):
         if AuthDB().login_user(username, password):
             self.ids.status.text = "Login berhasil!"
             app = self.get_app()
-            app.go_to_home()
+            app.go_to_pilih()
         else:
             self.ids.status.text = "Login gagal. Coba lagi."
             
@@ -27,7 +27,8 @@ class LoginScreen(MDScreen):
     def log_session(self, username):
         data = {
             "username": username,
-            "is_logged_in": True
+            "is_logged_in": True,
+            "bahasa": "c++"
         }
         with open("data/session.json", "w") as f:
             json.dump(data, f, indent=4)  
@@ -36,7 +37,8 @@ class LoginScreen(MDScreen):
     def not_log_session(self, username):
         data = {
             "username": username,
-            "is_logged_in": False
+            "is_logged_in": False,
+            "bahasa": "c++"
         }
         with open("data/session.json", "w") as f:
             json.dump(data, f, indent=4)
