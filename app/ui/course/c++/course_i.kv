@@ -1,5 +1,5 @@
-<CourseScreen_iv>:
-    name: "course_iv"
+<CourseScreen_i>:
+    name: "course_i"
     
     MDFloatLayout:
         canvas.before:
@@ -85,3 +85,9 @@
         padding:"32dp"
         CustomButton:
             custext: "next"
+            on_release: app.change("task_i")
+    
+    MDIconButton:
+        icon: "arrow-left"
+        pos_hint: {"center_x":0.05,"center_y":0.953}
+        on_release: app.change("layoutbase")

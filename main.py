@@ -9,10 +9,7 @@ from kivymd.uix.button import MDFlatButton
 from app.screens.login import LoginScreen
 from app.screens.register import RegisterScreen
 from app.screens.splash import SplashScreen
-from app.screens.course_i import CourseScreen_i
-from app.screens.course_ii import CourseScreen_ii
-from app.screens.course_iii import CourseScreen_iii
-from app.screens.course_iv import CourseScreen_iv
+from app.screens.course import CourseScreen_i
 from app.screens.task_i import TaskScreen_i
 from app.screens.pilihcourse import PilihCourse
 from app.screens.teskemampuan import TesKemampuanScreen
@@ -22,11 +19,11 @@ from pathlib import Path
 import json
 
 #Untuk debugging windows
-# Window.size = (405, 720)
-# Window.minimum_width = 405
-# Window.minimum_height = 720
-# Window.left = 50
-# Window.top = 50
+Window.size = (405, 720)
+Window.minimum_width = 405
+Window.minimum_height = 720
+Window.left = 50
+Window.top = 50
 
 #Initialize Components 
 Builder.load_file("app/components/custombtn.kv")
@@ -46,10 +43,7 @@ class MainApp(MDApp):
         self.sm.add_widget(SplashScreen(name="splash"))
         self.sm.add_widget(LoginScreen(name="login"))
         self.sm.add_widget(RegisterScreen(name="register"))
-        self.sm.add_widget(CourseScreen_i(name="course_i"))
-        self.sm.add_widget(CourseScreen_ii(name="course_ii"))
-        self.sm.add_widget(CourseScreen_iii(name="course_iii"))
-        self.sm.add_widget(CourseScreen_iv(name="course_iv"))
+        self.sm.add_widget(CourseScreen_i(name="course"))
         self.sm.add_widget(TaskScreen_i(name="task_i"))
         self.sm.add_widget(PilihCourse(name="pilihcourse"))
         self.sm.add_widget(LayoutBase(name="layoutbase"))
