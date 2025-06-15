@@ -12,6 +12,7 @@ class TimerScreen(MDScreen):
     time_left = NumericProperty(0)
     time_display = StringProperty("00:00:00")
     is_running = BooleanProperty(False)
+    initial_time_set = BooleanProperty(False)
     hour_text = StringProperty("Jam")
     minute_text = StringProperty("Menit")
     second_text = StringProperty("Detik")
@@ -54,23 +55,26 @@ class TimerScreen(MDScreen):
         if self.is_running:
             return
 
-        try:
-            h = int(self.hour_text) if self.hour_text.isdigit() else 0
-            m = int(self.minute_text) if self.minute_text.isdigit() else 0
-            s = int(self.second_text) if self.second_text.isdigit() else 0
-        except:
-            toast("Pilih durasi dulu!")
-            return
+        if not self.initial_time_set:
+            try:
+                h = int(self.hour_text) if self.hour_text.isdigit() else 0
+                m = int(self.minute_text) if self.minute_text.isdigit() else 0
+                s = int(self.second_text) if self.second_text.isdigit() else 0
+            except:
+                toast("Pilih durasi dulu!")
+                return
 
-        self.time_left = h * 3600 + m * 60 + s
-        if self.time_left <= 0:
-            toast("Durasi harus lebih dari 0")
-            return
+            self.time_left = h * 3600 + m * 60 + s
+            if self.time_left <= 0:
+                toast("Durasi harus lebih dari 0")
+                return
+
+        self.initial_time_set = True  # Tandai bahwa waktu awal sudah di-set
 
         self.update_time_display()
         self.is_running = True
         self._event = Clock.schedule_interval(self.update_time, 1)
-
+    
     def update_time(self, dt):
         if self.time_left > 0:
             self.time_left -= 1
@@ -83,9 +87,10 @@ class TimerScreen(MDScreen):
         self.update_time_display()
         toast("⏰ Waktu habis!")
         self.play_alarm()
+        self.initial_time_set = False
 
     def play_alarm(self):
-        sound = SoundLoader.load("assets/250629__kwahmah_02__alarm1.mp3")
+        sound = SoundLoader.load("assets/250629_kwahmah_02_alarm1.mp3")
         if sound:
             sound.play()
 
@@ -99,6 +104,7 @@ class TimerScreen(MDScreen):
         self.stop_timer()
         self.time_left = 0
         self.time_display = "00:00:00"
+        self.initial_time_set = False
 
     def update_time_display(self):
         m, s = divmod(self.time_left, 60)

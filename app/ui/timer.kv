@@ -12,22 +12,23 @@
 
         MDBoxLayout:
             orientation: 'vertical'
-            spacing: dp(20)
-            padding: dp(30)
-            size_hint: 0.9, 0.85
-            pos_hint: {"center_x": 0.5, "top": 0.95}
+            spacing: dp(14)
+            padding: dp(14)
+            size_hint: 0.85, 0.85
+            pos_hint: {"center_x": 0.5, "top": 1}
 
             
             MDLabel:
                 text: "Timer"
-                font_style: "H4"
+                font_name: "assets/fonts/Poppins-Bold.ttf"
+                font_size: sp(56)
                 halign: "center"
                 theme_text_color: "Primary"
                 bold: True
 
             MDLabel:
                 text: "Atur timer untuk pengingat dan manajemen waktu anda saat mempelajari materi"
-                font_style: "Body1"
+                font_name: "assets/fonts/Poppins-Regular.ttf"
                 halign: "center"
                 theme_text_color: "Secondary"
 
@@ -35,31 +36,40 @@
                 size_hint_y: None
                 height: dp(50)
                 spacing: dp(10)
+                halign: "center"
 
                 MDDropDownItem:
                     id: hour_picker
                     text: root.hour_text
+                    font_name: "assets/fonts/Poppins-Bold.ttf"
+                    size_hint_x: 1
+                    size_hint_y: None
                     on_release: root.hour_menu.open()
 
                 MDDropDownItem:
                     id: minute_picker
                     text: root.minute_text
+                    font_name: "assets/fonts/Poppins-Bold.ttf"
+                    size_hint_x: 1
+                    size_hint_y: None
                     on_release: root.minute_menu.open()
 
                 MDDropDownItem:
                     id: second_picker
                     text: root.second_text
+                    font_name: "assets/fonts/Poppins-Bold.ttf"  
+                    size_hint_x: 1
+                    size_hint_y: None
                     on_release: root.second_menu.open()
-
-
             MDCard:
                 size_hint_y: None
                 height: dp(100)
-                md_bg_color: 0.2, 0.2, 0.2, 1
-                radius: [20]
+                md_bg_color: get_color_from_hex("#1C1C1C")
+                radius: [10]
                 padding: dp(20)
                 MDLabel:
                     text: root.time_display
+                    font_name: "assets/fonts/Poppins-Bold.ttf"
                     halign: "center"
                     font_style: "H3"
                     theme_text_color: "Custom"
@@ -68,26 +78,35 @@
 
             MDRaisedButton:
                 text: "Start"
+                font_name: "assets/fonts/Poppins-Bold.ttf"
                 on_release: root.start_timer()
-                md_bg_color: 0.2, 0.2, 0.2, 1
+                md_bg_color: get_color_from_hex("#1C1C1C")
                 text_color: 1, 1, 1, 1
+                size_hint_x: 1
                 size_hint_y: None
-                height: dp(50)
+                size: dp(150), dp(48)
+                pos_hint: {"center_x": 0.5}
 
             MDRaisedButton:
                 text: "Stop"
+                font_name: "assets/fonts/Poppins-Bold.ttf"
                 on_release: root.stop_timer()
-                md_bg_color: 0.2, 0.2, 0.2, 1
+                md_bg_color: get_color_from_hex("#1C1C1C")
                 text_color: 1, 1, 1, 1
+                size_hint_x: 1
                 size_hint_y: None
-                height: dp(50)
+                size: dp(150), dp(48)
+                pos_hint: {"center_x": 0.5}
 
             MDRaisedButton:
                 text: "Reset"
+                font_name: "assets/fonts/Poppins-Bold.ttf"
                 on_release: root.reset_timer()
-                md_bg_color: 0.2, 0.2, 0.2, 1
+                md_bg_color: get_color_from_hex("#1C1C1C")
                 text_color: 1, 1, 1, 1
+                size_hint_x: 1
                 size_hint_y: None
-                height: dp(50)
+                size: dp(150), dp(48)
+                pos_hint: {"center_x": 0.5}
 
     Navbar

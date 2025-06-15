@@ -1,0 +1,24 @@
+<CourseCpp>:
+    name: "coursecpp"
+            
+    ScreenManager:
+        id: screen_manager
+        
+    MDBoxLayout:
+        padding:"24dp"
+        orientation:"vertical"
+        MDLabel:
+            text: "Pengenalan C++"
+            font_size: root.width/18
+            font_name: "Poppins"
+            bold: True
+            size: self.size
+            halign: "center"
+            size_hint_y: None
+            height:self.texture_size[1]
+        Widget
+
+    MDIconButton:
+        icon: "arrow-left"
+        pos_hint: {"center_x":0.05,"center_y":0.953}
+        on_release: app.change("layoutbase")

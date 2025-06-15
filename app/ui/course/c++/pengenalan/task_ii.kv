@@ -1,6 +1,6 @@
-<TaskScreen_i>:
-    name: "task_i"
-    
+<TaskScreen_ii>:
+    name: "task_ii"
+
     MDFloatLayout:
         canvas.before:
             Color:
@@ -14,15 +14,9 @@
         orientation: "vertical"
         padding: root.width/25
         spacing: root.width/25
-        MDLabel:
-            text: "Pengenalan C++"
-            font_size: root.width/18
-            font_name: "Poppins"
-            bold: True
-            size: self.size
-            halign: "center"
+        Widget:
             size_hint_y: None
-            height:self.texture_size[1]
+            height: "56dp"
         MDBoxLayout:
             orientation:"vertical"
             MDBoxLayout:
@@ -37,7 +31,7 @@
                     size_hint_y: None
                     height: "156dp"
                     MDLabel:
-                        text: "Apa fungsi dari #include <iostream> dalam program C++?"
+                        text: "Apa fungsi dari return 0; dalam program C++?"
                         font_name: "Poppins"
                         font_size: "14sp"
                         markup: True
@@ -51,27 +45,32 @@
                     spacing: "24dp"
                     Widget
                     CustomButton:
-                        id: salah
-                        custext: "A. library"
+                        id: benar
+                        custext: "Mengakhiri program dengan status sukses"
                         md_bg_color: 0.1,0.1,0.2,1
-                        on_release: salah.md_bg_color = (1,0,0,1)
+                        on_release: app.root.get_screen("coursecpp").select_one(self)
                     CustomButton:
-                        id: benar    
-                        custext: "A. library"
+                        id: salah    
+                        custext: "Menampilkan teks ke layar"
                         md_bg_color: 0.1,0.1,0.2,1
-                        on_release: benar.md_bg_color = (1,0,0,0)
-                    CustomButton:
-                        id: salah
-                        custext: "A. library"
-                        md_bg_color: 0.1,0.1,0.2,1
-                        on_release: salah.md_bg_color = (1,0,0,1)
+                        on_release: app.root.get_screen("coursecpp").select_one(self)
                     CustomButton:
                         id: salah
-                        custext: "A. library"
+                        custext: "Mendeklarasikan pustaka"
                         md_bg_color: 0.1,0.1,0.2,1
-                        on_release: salah.md_bg_color = (1,0,0,1)
-                    Widget 
-    MDIconButton:
-        icon: "arrow-left"
-        pos_hint: {"center_x":0.05,"center_y":0.953}
-        on_release: app.change("layoutbase")
+                        on_release: app.root.get_screen("coursecpp").select_one(self)
+                    CustomButton:
+                        id: salah
+                        custext: "Menghapus data dari memori"
+                        md_bg_color: 0.1,0.1,0.2,1
+                        on_release: app.root.get_screen("coursecpp").select_one(self)
+                MDBoxLayout:
+                    spacing: "24dp"
+                    CustomButton:
+                        custext: "prev"
+                        md_bg_color: 0.1,0.1,0.2,1
+                        on_release: app.change_screen("coursecpp", "course_ii")
+                    CustomButton:
+                        custext: "next"
+                        md_bg_color: 0.1,0.1,0.2,1
+                        on_release: app.change_screen("coursecpp", "course_iii")

@@ -1,0 +1,76 @@
+<TaskScreen_iii>:
+    name: "task_iii"
+    
+    MDFloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                source: "assets/bg1.png"
+                pos: self.parent.pos
+                size: self.parent.size
+                
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: root.width/25
+        spacing: root.width/25
+        Widget:
+            size_hint_y: None
+            height: "56dp"
+        MDBoxLayout:
+            orientation:"vertical"
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: root.width/15
+                Widget:
+                    size_hint_y: None
+                    height: "36dp"
+                MDCard:
+                    orientation: "vertical"
+                    padding: "24dp"
+                    size_hint_y: None
+                    height: "156dp"
+                    MDLabel:
+                        text: "Tipe data apa yang digunakan untuk menyimpan bilangan desimal?"
+                        font_name: "Poppins"
+                        font_size: "14sp"
+                        markup: True
+                        size: self.size
+                        halign: "center"
+                Widget:
+                    size_hint_y: None
+                    height: "36dp"
+                MDBoxLayout:
+                    orientation: "vertical"
+                    spacing: "24dp"
+                    Widget
+                    CustomButton:
+                        id: salah
+                        custext: "int"
+                        md_bg_color: 0.1,0.1,0.2,1
+                        on_release: app.root.get_screen("coursecpp").select_one(self)
+                    CustomButton:
+                        id: benar    
+                        custext: "float"
+                        md_bg_color: 0.1,0.1,0.2,1
+                        on_release: app.root.get_screen("coursecpp").select_one(self)
+                    CustomButton:
+                        id: salah
+                        custext: "char"
+                        md_bg_color: 0.1,0.1,0.2,1
+                        on_release: app.root.get_screen("coursecpp").select_one(self)
+                    CustomButton:
+                        id: salah
+                        custext: "string"
+                        md_bg_color: 0.1,0.1,0.2,1
+                        on_release: app.root.get_screen("coursecpp").select_one(self)
+                MDBoxLayout:
+                    spacing: "24dp"
+                    CustomButton:
+                        custext: "prev"
+                        md_bg_color: 0.1,0.1,0.2,1
+                        on_release: app.change_screen("coursecpp", "course_iii")
+                    CustomButton:
+                        custext: "next"
+                        md_bg_color: 0.1,0.1,0.2,1
+                        on_release: app.change_screen("coursecpp", "course_iv")

@@ -9,8 +9,8 @@ from kivymd.uix.button import MDFlatButton
 from app.screens.login import LoginScreen
 from app.screens.register import RegisterScreen
 from app.screens.splash import SplashScreen
-from app.screens.course import CourseScreen_i
-from app.screens.task_i import TaskScreen_i
+from app.screens.coursecpp import CourseCpp
+from app.screens.scorecourse import ScoreCourse
 from app.screens.pilihcourse import PilihCourse
 from app.screens.teskemampuan import TesKemampuanScreen
 from layoutbase import LayoutBase
@@ -43,8 +43,8 @@ class MainApp(MDApp):
         self.sm.add_widget(SplashScreen(name="splash"))
         self.sm.add_widget(LoginScreen(name="login"))
         self.sm.add_widget(RegisterScreen(name="register"))
-        self.sm.add_widget(CourseScreen_i(name="course"))
-        self.sm.add_widget(TaskScreen_i(name="task_i"))
+        self.sm.add_widget(CourseCpp(name="coursecpp"))
+        self.sm.add_widget(ScoreCourse(name="scorecourse"))
         self.sm.add_widget(PilihCourse(name="pilihcourse"))
         self.sm.add_widget(LayoutBase(name="layoutbase"))
         self.sm.add_widget(TesKemampuanScreen(name="teskemampuan"))
@@ -98,8 +98,8 @@ class MainApp(MDApp):
     def change(self, changeS):
         self.sm.current = changeS
     
-    def change_screen(self, screen_name):
-        MDApp.get_running_app().root.get_screen("layoutbase").ids.screen_manager.current = screen_name
+    def change_screen(self, layout, screen_name):
+        MDApp.get_running_app().root.get_screen(layout).ids.screen_manager.current = screen_name
 
     def show_snackbar(self):
         dialog = MDDialog(
@@ -112,7 +112,7 @@ class MainApp(MDApp):
             ]
         )
         dialog.open()
-
+        
     #Tambah Font Custom
     def load_font(self):
       LabelBase.register(

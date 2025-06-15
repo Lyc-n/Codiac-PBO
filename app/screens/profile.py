@@ -4,21 +4,19 @@ from kivy.lang import Builder
 from pathlib import Path
 import json
 
-Builder.load_file("app/ui/home.kv")
+Builder.load_file("app/ui/profile.kv")
 logsess = Path("data/session.json")
 
-class HomeScreen(MDScreen):
+class ProfileScreen(MDScreen):
     uname = StringProperty("sedang dimuat...")
-    bhs = StringProperty("sedang dimuat...")
     
     def on_enter(self):
         if logsess.exists():
             with open("data/session.json", "r") as f:
                     data = json.load(f)
                     self.uname = data.get("username", "user")
-                    self.bhs = data.get("bahasa", "c++")
         else: pass
-                
+    
     def getNameUser(self):
         if logsess.exists():
             with open("data/session.json", "r") as f:
@@ -28,17 +26,4 @@ class HomeScreen(MDScreen):
         else:
             uname = "user"
             return uname
-    
-    def getBahasa(self):
-        if logsess.exists():
-            with open("data/session.json", "r") as f:
-                data = json.load(f)
-                bhs = data.get("bahasa")
-            return bhs
-        else:
-            bhs = "c++"
-            return bhs
-    
-    def search(self):
-        pass
     

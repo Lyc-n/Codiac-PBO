@@ -1,0 +1,109 @@
+<ProfileScreen>:
+    name: "profile"
+    
+    MDFloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1,1,1,1
+            Rectangle:
+                source: "assets/bg1.png"
+                pos: self.parent.pos
+                size: self.parent.size
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "24dp"
+        spacing: "24dp"
+        MDLabel:
+            text: "Hi, Selamat Datang"
+            font_name: "Poppins"
+            bold: True
+            font_size: "36sp"
+            size_hint_y: None
+            height: self.texture_size[1]
+        MDCard:
+            md_bg_color: 0.1,0.1,0.2,1
+            size_hint_y: None
+            height: self.minimum_height
+            padding: "24dp"
+            MDLabel:
+                text: root.uname
+                font_name: "Poppins"
+                bold: True
+                font_size: "24sp"
+                size_hint_y: None
+                height: self.texture_size[1]
+        MDCard:
+            md_bg_color: 0.1,0.1,0.2,1
+            orientation: "vertical"
+            spacing: "12dp"
+            padding: "24dp"
+            MDLabel:
+                text: "Data Pengerjaan"
+                font_name: "Poppins"
+                bold: True
+                font_size: "18sp"
+                size: self.size
+                halign: "center"
+                size_hint_y: None
+                height: self.texture_size[1]
+            MDBoxLayout:
+                orientation: "horizontal"
+                adaptive_heigth: True
+                MDBoxLayout:
+                    orientation: "vertical"
+                    adaptive_heigth: True
+                    MDLabel:
+                        text: "Total Pengerjaan"
+                        font_name: "Poppins"
+                        bold: True
+                        font_size: "18sp"
+                        size_hint_y: None
+                        size: self.size
+                        halign: "center"
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: "0"
+                        font_name: "Poppins"
+                        bold: True
+                        font_size: "56sp"
+                        size_hint_y: None
+                        size: self.size
+                        halign: "center"
+                        height: self.texture_size[1]
+                    Widget
+                MDSeparator
+                    orientation: "vertical"
+                    width: "3dp"
+                    color: 1,1,1,1
+                MDBoxLayout:
+                    orientation: "vertical"
+                    adaptive_heigth: True
+                    MDLabel:
+                        text: "Total sertifikat"
+                        font_name: "Poppins"
+                        bold: True
+                        font_size: "18sp"
+                        size_hint_y: None
+                        size: self.size
+                        halign: "center"
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: "0"
+                        font_name: "Poppins"
+                        bold: True
+                        font_size: "56sp"
+                        size_hint_y: None
+                        size: self.size
+                        halign: "center"
+                        height: self.texture_size[1]
+                    Widget
+        CustomButton:
+            custext: "Tentang Kami"
+            md_bg_color: 0.1,0.1,0.2,1
+        CustomButton:
+            custext: "Pengaturan"
+            md_bg_color: 0.1,0.1,0.2,1
+        CustomButton:
+            custext: "Log Out"
+            md_bg_color: 0.1,0.1,0.2,1
+        Widget

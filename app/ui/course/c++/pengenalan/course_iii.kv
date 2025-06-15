@@ -1,6 +1,6 @@
-<CourseScreen_i>:
-    name: "course_i"
-    
+<CourseScreen_iii>:
+    name: "course_iii"
+    orientation: "vertical"
     MDFloatLayout:
         canvas.before:
             Color:
@@ -9,38 +9,41 @@
                 source: "assets/bg1.png"
                 pos: self.parent.pos
                 size: self.parent.size
-        
     MDBoxLayout:
         orientation: "vertical"
         padding: root.width/25
         spacing: root.width/25
-        MDLabel:
-            text: "Pengenalan C++"
-            font_size: root.width/18
-            font_name: "Poppins"
-            bold: True
-            size: self.size
-            halign: "center"
+        Widget:
             size_hint_y: None
-            height:self.texture_size[1]
-
-        MDBoxLayout:
-            orientation:"vertical"
+            height: "56dp"
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            orientation: "vertical"
+            bar_width:0
             MDBoxLayout:
                 orientation: "vertical"
                 spacing: root.width/15
+                adaptive_height:True
                 MDCard:
                     orientation: "vertical"
-                    MDBoxLayout:
-                        padding: "24dp"
-                        MDLabel:
-                            text: "[size=36][b]Apa itu C++?[/b][/size]\n\nC++ adalah salah satu bahasa pemrograman yang populer dan banyak digunakan untuk pengembangan aplikasi, game, sistem operasi, dan perangkat lunak lainnya. Bahasa ini merupakan pengembangan dari bahasa C, dengan tambahan fitur seperti pemrograman berorientasi objek (OOP).\n\n,[size=36][b]Kenapa Belajar C++?[/b][/size]\n\n[b]Cepat dan Efisien[/b]: C++ dikenal sebagai bahasa yang cepat dan cocok untuk aplikasi yang membutuhkan performa tinggi.\n[b]Fleksibel[/b]: Bisa digunakan untuk berbagai jenis aplikasi, mulai dari game hingga software kompleks.Fondasi \n[b]Pemrograman[/b]: Banyak konsep dasar pemrograman yang bisa dipelajari melalui C++."
-                            font_name: "Poppins"
-                            font_size: "12sp"
-                            markup: True
-                            size_hint_y:None
-                            height: self.texture_size[1]
+                    padding: "24dp"
+                    size_hint_y: None
+                    height: root.height/3.1
+                    md_bg_color: 0.1,0.1,0.2,1
+                    MDLabel:
+                        text: "[size=42][b]Apa itu Variabel?[/b][/size]\nVariabel adalah tempat untuk menyimpan data dalam program. Setiap variabel memiliki nama dan tipe data.\n\n[size=42][b]Tipe Data Umum di C++[/b][/size]\n1. [b]int[/b]: Untuk bilangan bulat, seperti 1, 2, 3.\n2. [b]float[/b]: Untuk bilangan desimal, seperti 3.14.\n3. [b]char[/b]: Untuk karakter tunggal, seperti 'A'.\n4. [b]string[/b]: Untuk teks, seperti \"Hello\".\n"
+                        font_name: "Poppins"
+                        font_size: "14sp"
+                        markup: True
+                        size_hint_y:None
+                        height: self.texture_size[1]
                         
+                MDCard:
+                    orientation: "vertical"
+                    size_hint_y: None
+                    height: root.height/5
+                    md_bg_color: 0.1,0.1,0.2,1
                     MDCard:
                         orientation: "horizontal"
                         md_bg_color: 0,0,0,0
@@ -54,7 +57,7 @@
                                 source: "assets/bgbtn2.png"
                                 pos: self.pos
                                 size:self.size
-                                radius: [0, 0, 24, 24]
+                                radius: [24, 24, 0, 0]
                         MDBoxLayout:
                             spacing: "8dp"
                             Widget:
@@ -74,20 +77,18 @@
                                 size_hint: None, None
                                 size: "12dp","12dp"
                                 md_bg_color: 1,0,0,1
+                    MDBoxLayout:
+                        padding: "24dp"
+                        MDLabel:
+                            text: "[color=#0705bc]#include[/color] [color=#12b5ba]<iostream>[/color]\n\n[color=#0705bc]int[/color] [color=#1261ba]main[/color][color=#12b5ba]() {\n    std::cout << \"hello, world!\";\n    [color=#0705bc]return[/color] [color=#12b5ba]0;\n}[/color]"
+                            font_name: "CourierPrime"
+                            font_size: "14sp"
+                            markup: True
+                            size_hint_y:None
+                            height: self.texture_size[1]
                         
-                        
-                MDCard:
-                    MDLabel:
-                        text: "lorem ipsum dolor sit amet."
-                        font_name: "CourierPrime"
-                        font_size: root.width/25
     MDBoxLayout:
         padding:"32dp"
         CustomButton:
             custext: "next"
-            on_release: app.change("task_i")
-    
-    MDIconButton:
-        icon: "arrow-left"
-        pos_hint: {"center_x":0.05,"center_y":0.953}
-        on_release: app.change("layoutbase")
+            on_release: app.change_screen("coursecpp", "task_iii")

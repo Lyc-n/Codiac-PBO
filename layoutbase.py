@@ -1,15 +1,12 @@
-#from kivy.uix.screenmanager import ScreenManager
 from kivymd.uix.screen import MDScreen
 from kivy.lang import Builder
 from kivy.clock import Clock
 from app.screens.home import HomeScreen
 from app.screens.bookmark import BookmarkScreen
 from app.screens.timer import TimerScreen
+from app.screens.profile import ProfileScreen
 
 Builder.load_file("layoutbase.kv")
-# Builder.load_file("app/ui/home.kv")
-# Builder.load_file("app/ui/bookmark.kv")
-# Builder.load_file("app/ui/timer.kv")
 
 class LayoutBase(MDScreen):
     def __init__(self, **kwargs):
@@ -20,4 +17,5 @@ class LayoutBase(MDScreen):
         self.ids.screen_manager.add_widget(HomeScreen(name="home"))
         self.ids.screen_manager.add_widget(BookmarkScreen(name="bookmark"))
         self.ids.screen_manager.add_widget(TimerScreen(name="timer"))
+        self.ids.screen_manager.add_widget(ProfileScreen(name="profile"))
         

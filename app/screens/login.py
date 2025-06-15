@@ -26,20 +26,25 @@ class LoginScreen(MDScreen):
     #Buat Login Session
     def log_session(self, username):
         data = {
-            "username": username,
-            "is_logged_in": True,
-            "bahasa": "c++"
-        }
+                "username": username,
+                "is_logged_in": True,
+                "bahasa": "",
+                "sertif": 0,
+                "task": 0
+            }
+        
         with open("data/session.json", "w") as f:
             json.dump(data, f, indent=4)  
     
     #Login tanpa session
     def not_log_session(self, username):
         data = {
-            "username": username,
-            "is_logged_in": False,
-            "bahasa": "c++"
-        }
+                "username": username,
+                "is_logged_in": False,
+                "bahasa": "",
+                "sertif": 0,
+                "task": 0
+            }
         with open("data/session.json", "w") as f:
             json.dump(data, f, indent=4)
       

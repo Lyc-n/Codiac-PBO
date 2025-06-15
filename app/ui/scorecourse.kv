@@ -1,0 +1,45 @@
+<ScoreCourse>:
+    name: "scorecourse"
+    MDFloatLayout:
+        canvas.before:
+            Color: 
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                source: "assets/bg1.png"
+                pos: self.parent.pos
+                size: self.parent.size
+        
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "24dp"
+        Widget: 
+            size_hint_y: None
+            height: "32dp"
+        MDLabel:
+            id: score_label
+            text: "Score Anda 70%"
+            font_name: "Poppins"
+            font_size: "42sp"
+            bold: True
+            size_hint_y: None
+            height: self.texture_size[1]
+            size: self.size
+            halign: "center"
+        Widget: 
+            size_hint_y: None
+            height: root.height/6
+        Image:
+            source:"assets/asetScore.png"
+            size: self.size
+            pos: self.pos
+        
+        MDLabel: 
+            text: "Selamat kamu sudah menyelesaikan materi ini dengan baik"
+            font_name: "Inter"
+            font_size: "18sp"
+            size: self.size
+            halign: "center"
+        
+        CustomButton:
+            custext: "continue"
+            on_release: app.go_to_home()

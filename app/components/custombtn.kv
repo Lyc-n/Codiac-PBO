@@ -3,7 +3,7 @@
     clr: 1,1,1,1
     bg: "assets/bgbtn.png"
     size_hint_y: None
-    height: root.width/9
+    height: "48dp"
     md_bg_color: 0, 0, 0, 0  # Agar background tidak tertutup warna MDCard
     radius:[24]
     canvas.before:
@@ -120,18 +120,18 @@
     MDIconButton:
         icon:"home"
         size_hint: 1,1
-        on_release: app.change_screen("home")
+        on_release: app.change_screen("layoutbase", "home")
     MDIconButton:
         icon:"bookmark"
         size_hint: 1,1
-        on_release: app.change_screen("bookmark")
+        on_release: app.change_screen("layoutbase", "bookmark")
     MDIconButton:
         icon:"timer"
         size_hint: 1,1
-        on_release: app.change_screen("timer")
+        on_release: app.change_screen("layoutbase", "timer")
     MDIconButton:
         icon:"account"
         size_hint: 1,1
-        on_release: app.change_screen("home")
+        on_release: app.change_screen("layoutbase", "profile")
 
         
