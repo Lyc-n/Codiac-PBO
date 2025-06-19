@@ -1,0 +1,134 @@
+<SertifikatScreen>:
+    name: "sertifikat"
+
+    MDFloatLayout:
+        canvas.before:
+            Color: 
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                source: "assets/bg1.png"
+                pos: self.parent.pos
+                size: self.parent.size  
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: self.width / 20 if self.width else 10
+            spacing: self.width / 30 if self.width else 5
+            pos_hint: {"center_x": 0.5, "center_y": 0.5}
+            size_hint: 1, None
+            height: root.height * 0.8
+
+            MDBoxLayout:
+                orientation: "vertical"
+                adaptive_height: True
+                spacing: root.width / 40
+
+                MDLabel:
+                    text: "Serifikat"
+                    halign: "center"
+                    font_name: "assets/fonts/Poppins-Bold.ttf"  # Gunakan font Poppins Bold
+                    font_size: root.width / 7 if root.width else "80sp"  # Ukuran font responsif
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1  # Warna teks putih
+
+                Widget:
+                    size_hint_y: None
+                    height: root.width / 8 if root.width else 10  # Jarak vertikal
+
+                MDLabel:
+                    text: "Selamat anda telah berhasil menyelesaikan tes kemampuan C++"
+                    halign: "center"
+                    font_name: "assets/fonts/Poppins-Regular.ttf"  # Gunakan font Inter biasa
+                    font_size: "18sp"  # Ukuran font sedang
+
+                Widget:
+                    size_hint_y: None
+                    height: root.width / 25 if root.width else 10  # Jarak vertikal
+                Image:
+                    source: "assets/sertifikat.png"  # Gambar burung
+                    size_hint: None, None
+                    size: root.width / 1.5 if root.width else 200, root.width / 1.5 if root.width else 200
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}  # Posisi di tengah layar
+
+                Widget:
+                    size_hint_y: None
+                    height: root.width / 400 if root.width else 10  # Jarak vertikal
+            
+                MDLabel:
+                    text: "Sertifikat anda sedang dipersiapkan!"
+                    halign: "center"
+                    font_name: "assets/fonts/Poppins-Regular.ttf"  # Gunakan font Inter biasa
+                    font_size: "18sp"  # Ukuran font sedang
+                Widget:
+                    size_hint_y: None
+                    height: root.width / 900 if root.width else 10  # Jarak vertikal
+# Dua tombol di bawah gambar
+            MDBoxLayout:
+                orientation: "horizontal"
+                spacing: root.width / 60 if root.width else 10
+                size_hint_y: None
+                height: root.width / 10 if root.width else 50
+                pos_hint: {"center_x": 0.5}
+
+                MDRaisedButton:
+                    text: "Donwload"
+                    size_hint_x: 0.45
+                    size_hint_y: None
+                    height: root.width / 7 if root.width else 50  # Tinggi tombol
+                    pos_hint: {"center_y": 0.5}
+                    md_bg_color: 0, 0, 0, 0  # Membuat latar belakang default transparan
+                    font_name: "assets/fonts/Poppins-Bold.ttf"  # Gunakan font bold
+                    font_size: "18sp"
+                    on_release: app.on_tes_soal_donwload()
+                    canvas.before:
+                        Color:
+                            rgba: 0.086, 0.086, 0.086, 1  # Warna latar belakang tombol
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10]  # Radius sudut tombol kecil
+
+                MDRaisedButton:
+                    text: "Bagikan"
+                    size_hint_x: 0.45
+                    size_hint_y: None
+                    height: root.width / 7 if root.width else 50  # Tinggi tombol
+                    pos_hint: {"center_y": 0.5}
+                    md_bg_color: 0, 0, 0, 0  # Membuat latar belakang default transparan
+                    font_name: "assets/fonts/Poppins-Bold.ttf"  # Gunakan font bold
+                    font_size: "18sp"
+                    on_release: app.on_tes_studikasus_bagikan()
+                    canvas.before:
+                        Color:
+                            rgba: 0.086, 0.086, 0.086, 1  # Warna latar belakang tombol
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10]  # Radius sudut tombol kecil
+               
+            Widget:
+                size_hint_y: None
+                height: root.width / 1000 if root.width else 10  # Jarak vertikal
+
+            # Tombol tambahan di bawah dua tombol
+            
+            MDRaisedButton:
+                text: "Continue"
+                size_hint_x: 1  # Tombol memenuhi lebar layar
+                size_hint_y: None
+                height: root.height / 12 if root.height else 50  # Tinggi tombol tetap responsif
+                pos_hint: {"center_x": 0.5}
+                font_name: "assets/fonts/Poppins-Bold.ttf"  # Gunakan font bold
+                font_size: "18sp"
+                on_release: 
+                    root.markdone()
+                    app.change("layoutbase")
+                md_bg_color: 0, 0, 0, 0  # Membuat latar belakang default transparan
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1  # Warna putih untuk memastikan gambar terlihat
+                    RoundedRectangle:
+                        source: "assets/bgbtn.png"  # Gambar untuk background tombol
+                        pos: self.pos
+                        size: self.size
+                        radius: [10]  # Radius untuk membuat sudut membulat                    
+            

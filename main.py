@@ -10,20 +10,23 @@ from app.screens.login import LoginScreen
 from app.screens.register import RegisterScreen
 from app.screens.splash import SplashScreen
 from app.screens.coursecpp import CourseCpp
+from app.screens.tsscpp import TssCpp
+from app.screens.stdks import StudyKasus
 from app.screens.scorecourse import ScoreCourse
 from app.screens.pilihcourse import PilihCourse
 from app.screens.teskemampuan import TesKemampuanScreen
+from app.screens.sertifikat import SertifikatScreen
 from layoutbase import LayoutBase
 from kivy.core.window import Window
 from pathlib import Path
 import json
 
 #Untuk debugging windows
-Window.size = (405, 720)
-Window.minimum_width = 405
-Window.minimum_height = 720
-Window.left = 50
-Window.top = 50
+#Window.size = (405, 720)
+#Window.minimum_width = 405
+#Window.minimum_height = 720
+#Window.left = 50
+#Window.top = 50
 
 #Initialize Components 
 Builder.load_file("app/components/custombtn.kv")
@@ -44,10 +47,13 @@ class MainApp(MDApp):
         self.sm.add_widget(LoginScreen(name="login"))
         self.sm.add_widget(RegisterScreen(name="register"))
         self.sm.add_widget(CourseCpp(name="coursecpp"))
+        self.sm.add_widget(TssCpp(name="tsscpp"))
+        self.sm.add_widget(StudyKasus(name="studykasus"))
         self.sm.add_widget(ScoreCourse(name="scorecourse"))
         self.sm.add_widget(PilihCourse(name="pilihcourse"))
         self.sm.add_widget(LayoutBase(name="layoutbase"))
         self.sm.add_widget(TesKemampuanScreen(name="teskemampuan"))
+        self.sm.add_widget(SertifikatScreen(name="sertifikat"))
         Clock.schedule_once(self.go_to_login, 4)
 
         return self.sm
@@ -112,6 +118,20 @@ class MainApp(MDApp):
             ]
         )
         dialog.open()
+        
+    def ubahstat(self, instance):
+        nama_file = "data/materi.json"
+        data_awal = {}
+        if not os.path.exists(nama_file):
+            with open(nama_file, "w") as f:
+                json.dump(data_awal, f, indent=4)
+        with open(nama_file, "r") as f:
+            data = json.load(f)
+            
+        data[instance.custom_key] = True
+        with open(nama_file, "w") as f:
+            json.dump(data, f, indent=4)    
+        
         
     #Tambah Font Custom
     def load_font(self):

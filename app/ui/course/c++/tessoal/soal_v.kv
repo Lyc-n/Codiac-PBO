@@ -1,0 +1,74 @@
+<Soal_v>:
+    name: "Soal_v"
+    
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: root.width/25
+        spacing: root.width/25
+        Widget:
+            size_hint_y: None
+            height: "56dp"
+        MDBoxLayout:
+            orientation:"vertical"
+            MDBoxLayout:
+                orientation: "vertical"
+                spacing: root.width/15
+                Widget:
+                    size_hint_y: None
+                    height: "36dp"
+                MDCard:
+                    orientation: "vertical"
+                    padding: "24dp"
+                    size_hint_y: None
+                    height: self.minimum_height
+                    MDLabel:
+                        text: "Apa output dari program berikut?"
+                        font_name: "Poppins"
+                        font_size: "14sp"
+                        markup: True
+                        size: self.size
+                        halign: "center"
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                    MDLabel:
+                        text: "\n\n#include <iostream>\nint main() {\nint a = 10;\nstd::cout << \"Nilai: \" << (a > 5);\nreturn 0;\n}"
+                        font_name: "CourierPrime"
+                        font_size: "14sp"
+                        markup: True
+                        size: self.size
+                        halign: "left"
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                Widget:
+                    size_hint_y: None
+                    height: "36dp"
+                MDBoxLayout:
+                    orientation: "vertical"
+                    spacing: "24dp"
+                    Widget
+                    CustomButton:
+                        id: A
+                        custext: "Nilai: True"
+                        md_bg_color: 0.1,0.1,0.2,1
+                        on_release: app.root.get_screen("tsscpp").select_one(self)
+                    CustomButton:
+                        id: B    
+                        custext: "Nilai: False"
+                        md_bg_color: 0.1,0.1,0.2,1
+                        on_release: app.root.get_screen("tsscpp").select_one(self)
+                    CustomButton:
+                        id: C
+                        custext: "Nilai: 1"
+                        md_bg_color: 0.1,0.1,0.2,1
+                        on_release: app.root.get_screen("tsscpp").select_one(self)
+                    CustomButton:
+                        id: D
+                        custext: "Nilai: 0"
+                        md_bg_color: 0.1,0.1,0.2,1
+                        on_release: app.root.get_screen("tsscpp").select_one(self)
+                
+                    CustomButton:
+                        id: tetap
+                        custext: "next"
+                        md_bg_color: 0.1,0.1,0.2,0
+                        on_release: app.root.get_screen("tsscpp").show_score()

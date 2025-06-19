@@ -62,7 +62,7 @@
                         halign: "center"
                         height: self.texture_size[1]
                     MDLabel:
-                        text: "0"
+                        text: root.task
                         font_name: "Poppins"
                         bold: True
                         font_size: "56sp"
@@ -73,7 +73,7 @@
                     Widget
                 MDSeparator
                     orientation: "vertical"
-                    width: "3dp"
+                    width: "2dp"
                     color: 1,1,1,1
                 MDBoxLayout:
                     orientation: "vertical"
@@ -88,7 +88,7 @@
                         halign: "center"
                         height: self.texture_size[1]
                     MDLabel:
-                        text: "0"
+                        text: root.sertif
                         font_name: "Poppins"
                         bold: True
                         font_size: "56sp"
@@ -106,4 +106,7 @@
         CustomButton:
             custext: "Log Out"
             md_bg_color: 0.1,0.1,0.2,1
+            on_release: 
+                root.logout()
+                app.change("login")
         Widget

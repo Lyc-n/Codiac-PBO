@@ -45,7 +45,7 @@
                     icon_size: root.width /15
                     pos_hint: {"center_x":1,"center_y":0.5}
                     size: self.size
-                    on_release: app.change_screen("profile")
+                    on_release: app.change_screen("layoutbase", "profile")
                 Widget:
                     size_hint_x:None
                     width: root.width/35
@@ -79,7 +79,7 @@
                     
                     MDLabel:
                         id: bhsa
-                        text: root.bhs
+                        text: f"Materi {root.bhs} Dasar  "
                         size:self.size
                         halign: "right"
                         valign: "bottom"
@@ -186,13 +186,32 @@
                         padding:[0,root.width/25,0,"36dp"]
                         adaptive_height:True
                         orientation: "vertical"
+                        Course:
+                            ctext: "Pengenalan C++"
+                            dtext: "Dasar sintaks dan struktur program"
+                            rtext: "Materi Dasar"
                         Course
+                            ctext: "Tipe Data & Variable"
+                            dtext: "Deklarasi dan penggunaan variabel"
+                            rtext: "Materi Dasar"
                         Course
+                            ctext: "Pengenalan Pointer"
+                            dtext: "Mengakses memori dengan pointer"
+                            rtext: "Materi Menengah"
                         Course
+                            ctext: "String Modern"
+                            dtext: "Manipulasi string modern"
+                            rtext: "Materi Menengah"
                         Course
+                            ctext: "Memori Dinamis"
+                            dtext: "Pengelolaan memori dinamis"
+                            rtext: "Materi Lanjutan"
                         Course
+                            ctext: "Exception Handling"
+                            dtext: "Menangani error dengan try-catch"
+                            rtext: "Materi Lanjutan"
                         CustomButton:
                             custext: "tes kemampuan"
-                            on_release: app.show_snackbar()
+                            on_release: app.change("teskemampuan")
 
     

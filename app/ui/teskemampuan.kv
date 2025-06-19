@@ -31,8 +31,6 @@
                     theme_text_color:"Custom"
                     text_color: 1, 1, 1, 1
                     pos_hint: {"center_x": 0.5}  # Posisi di bagian atas layar
-
-                # Tambahkan jarak antara teks "Tes Kemampuan" dan "Pilih soal..."
                 Widget:
                     size_hint_y: None
                     height: root.width / 25  # Jarak vertikal
@@ -62,41 +60,17 @@
 
             MDBoxLayout:
                 orientation: "horizontal"
-                spacing: 10  # Jarak antar tombol
+                spacing: "24dp"  # Jarak antar tombol
                 padding: 10  # Padding di sekitar tombol
 
-                Button:
-                    text: "Tes Soal"
-                    size_hint_x: 1  # Tombol memanjang hingga memenuhi sisi kiri
-                    size_hint_y: None  # Nonaktifkan pengaturan tinggi otomatis
-                    height: root.width / 8  # Tinggi tombol sedang
-                    pos_hint: {"center_y": 0.5}  # Posisi vertikal di tengah
-                    font_name: "assets/fonts/Poppins-Bold.ttf"  # Gaya font Poppins Bold
-                    font_size: 18  # Ukuran font
-                    background_normal: ""  # Nonaktifkan gambar default
-                    background_color: 0, 0, 0, 0  # Transparan untuk menggunakan canvas
-                    canvas.before:
-                        Color:
-                            rgba: 0.086, 0.086, 0.086, 1  # Warna latar belakang tombol
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [10]  # Radius sudut tombol kecil
-
-                Button:
-                    text: "Tes Studikasus"
-                    size_hint_x: 1  # Tombol memanjang hingga memenuhi sisi kanan
-                    size_hint_y: None  # Nonaktifkan pengaturan tinggi otomatis
-                    height: root.width / 8  # Tinggi tombol sedang
-                    pos_hint: {"center_y": 0.5}  # Posisi vertikal di tengah
-                    font_name: "assets/fonts/Poppins-Bold.ttf"  # Gaya font Poppins Bold
-                    font_size: 18  # Ukuran font
-                    background_normal: ""  # Nonaktifkan gambar default
-                    background_color: 0, 0, 0, 0  # Transparan untuk menggunakan canvas
-                    canvas.before:
-                        Color:
-                            rgba: 0.086, 0.086, 0.086, 1  # Warna latar belakang tombol
-                        RoundedRectangle:
-                            pos: self.pos
-                            size: self.size
-                            radius: [10]  # Radius sudut tombol kecil
+                CustomButton:
+                    md_bg_color: 0.1,0.1,0.2,1
+                    custext: "Test Soal"
+                    on_release: app.change("tsscpp")
+                CustomButton:
+                    md_bg_color: 0.1,0.1,0.2,1
+                    custext: "Study Kasus"
+                    on_release: app.change("studykasus")
+            CustomButton:
+                custext: "Tes Soal + Study Kasus"
+                on_release: app.change("tsscpp")

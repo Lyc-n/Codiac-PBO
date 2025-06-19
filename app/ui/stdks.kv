@@ -1,0 +1,50 @@
+<StudyKasus>:
+    name: "studykasus"
+    
+    MDFloatLayout:
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1
+            Rectangle:
+                source: "assets/bg1.png"  # Background layar
+                pos: self.parent.pos
+                size: self.parent.size
+    MDBoxLayout:
+        orientation: "vertical"
+        padding: "18dp"
+        spacing: "32dp"
+        MDLabel:
+            text: "Study Kasus"
+            font_name : "Poppins"
+            font_size: "36sp"
+            bold: True 
+            size_hint_y: None
+            height: self.texture_size[1]
+            size: self.size
+            halign: "center"
+        MDCard: 
+            size_hint_y: None
+            height: self.minimum_height
+            padding: "24dp"
+            MDLabel: 
+                text: "Buatlah sebuah program dengan variable yang menghasilkan output\n[font=CourierPrime]15 + 2 adalah: 17[/font]"
+                font_name : "Poppins"
+                font_size: "14sp"
+                size_hint_y: None
+                height: self.texture_size[1]
+        MDTextField:
+            mode: "fill"
+            size_hint: 1,1
+            text_color_focus: 1,1,1,1
+            
+    MDIconButton:
+        icon: "arrow-left"
+        pos_hint: {"center_x":0.05,"center_y":0.953}
+        on_release: app.change("layoutbase")
+    
+    MDIconButton:
+        icon: "arrow-right"
+        pos_hint: {"center_x":0.95,"center_y":0.953}
+        on_release: app.change("sertifikat")
+    
+    

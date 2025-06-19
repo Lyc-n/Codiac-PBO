@@ -10,14 +10,25 @@
                 pos: self.parent.pos
                 size: self.parent.size
     MDBoxLayout:
+        orientation: "vertical"
+        padding: "24dp"
         MDLabel:
-            text: "Fitur \n Belum Tersedia"
-            pos_hint: {"center_x": 0.5,"center_y": 0.5}
+            text: "Bookmark"
             font_size: root.width/18
             font_name: "Poppins"
             bold: True
             size: self.size
             halign: "center"
+            size_hint_y: None
+            height: self.texture_size[1]
+            
+        MDBoxLayout:
+            id: materi_box
+            padding: "12dp"
+            spacing: "24dp"
+            orientation:"vertical"
+            adaptive_height: True
+        Widget
      
     
     

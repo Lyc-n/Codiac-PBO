@@ -5,13 +5,13 @@ import sqlite3
 class AuthDB:
     def __init__(self):
         self.db_path = "data/users.db"
-        self.init_db()
+        self.__init_db()
 
-    def connect(self):
+    def __connect(self):
         return sqlite3.connect(self.db_path)
 
-    def init_db(self):
-        conn = self.connect()
+    def __init_db(self):
+        conn = self.__connect()
         c = conn.cursor()
         c.execute("""
             CREATE TABLE IF NOT EXISTS users (
@@ -32,7 +32,7 @@ class AuthDB:
         return salt, hashed
 
     def register_user(self, nama, email, password):
-        conn = self.connect()
+        conn = self.__connect()
         c = conn.cursor()
 
         salt, hashed = self.__hash_password(password)
@@ -46,7 +46,7 @@ class AuthDB:
             conn.close()
 
     def login_user(self, nama, password):
-        conn = self.connect()
+        conn = self.__connect()
         c = conn.cursor()
         c.execute("SELECT salt, paswd FROM users WHERE nama = ?", (nama,))
         row = c.fetchone()

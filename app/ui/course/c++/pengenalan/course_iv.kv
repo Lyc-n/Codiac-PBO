@@ -17,78 +17,26 @@
             size_hint_y: None
             height: "56dp"
         ScrollView:
+            # ScrollView akan mengisi sisa ruang di dalam MDBoxLayout ini
+            size_hint: 1, 1
             do_scroll_x: False
-            do_scroll_y: True
-            orientation: "vertical"
-            bar_width:0
-            MDBoxLayout:
-                orientation: "vertical"
-                spacing: root.width/15
-                adaptive_height:True
-                MDCard:
-                    orientation: "vertical"
-                    padding: "24dp"
-                    size_hint_y: None
-                    height: root.height/3
-                    md_bg_color: 0.1,0.1,0.2,1
-                    MDLabel:
-                        text: "[size=42][b]Apa itu Input dan Output [/b][/size]\n\n[b]Output[/b]: Proses memasukkan data kedalam program, biasanya dilakukan oleh pengguna melalui keyboard.\n[b]Input[/b]: Proses menampilkan data dari program ke layar, biasanya berupa text atau hasil perhitungan.\n\n[size=42][b]Fungsi yang Digunakan[/b][/size]\n\n[b]Output[/b]: Menampilkan data ke layar menggunakan std::cout\n[b]Input[/b]: Mengambil data dari pengguna, biasanya menggunakan std::cin"
-                        font_name: "Poppins"
-                        font_size: "14sp"
-                        markup: True
-                        size_hint_y:None
-                        height: self.texture_size[1]
-                        
-                MDCard:
-                    orientation: "vertical"
-                    size_hint_y: None
-                    height: root.height/4.2
-                    md_bg_color: 0.1,0.1,0.2,1
-                    MDCard:
-                        orientation: "horizontal"
-                        md_bg_color: 0,0,0,0
-                        size_hint_y: None
-                        height: "32dp"
-                        padding: "10dp"
-                        canvas.before:
-                            Color: 
-                                rgba: 1,1,1,1
-                            RoundedRectangle:
-                                source: "assets/bgbtn2.png"
-                                pos: self.pos
-                                size:self.size
-                                radius: [24, 24, 0, 0]
-                        MDBoxLayout:
-                            spacing: "8dp"
-                            Widget:
-                            MDCard:
-                                size_hint: None, None
-                                size: "12dp","12dp"
-                                md_bg_color: 0,0.3,1,1
-                            MDCard:
-                                size_hint: None, None
-                                size: "12dp","12dp"
-                                md_bg_color: 0,1,0,1
-                            MDCard:
-                                size_hint: None, None
-                                size: "12dp","12dp"
-                                md_bg_color: 1,1,0,1
-                            MDCard:
-                                size_hint: None, None
-                                size: "12dp","12dp"
-                                md_bg_color: 1,0,0,1
-                    MDBoxLayout:
-                        padding: "24dp"
-                        MDLabel:
-                            text: "[color=#0705bc]#include[/color] [color=#12b5ba]<iostream>[/color]\n\n[color=#0705bc]int[/color] [color=#1261ba]main[/color][color=#12b5ba]() {\n    [color=#0705bc]int[/color] angka\n    std: :cin >> angka;\n    std: :cout << \"Angka yang dimasukkan: \" << angka;\n    [color=#0705bc]return[/color] [color=#12b5ba]0;\n}[/color]"
-                            font_name: "CourierPrime"
-                            font_size: "14sp"
-                            markup: True
-                            size_hint_y:None
-                            height: self.texture_size[1]
+            Image:
+                source: "assets/materi4.png"
+                size_hint: 1, None
+                height: self.width / self.image_ratio
+                allow_stretch: True
                         
     MDBoxLayout:
         padding:"32dp"
         CustomButton:
             custext: "next"
             on_release: app.change_screen("coursecpp", "task_iv")
+        MDIconButton:
+            custom_key: "m_iv"
+            icon: "bookmark-outline"
+            icon_size: "28sp"
+            size: self.size
+            pos: self.pos
+            on_release: 
+                app.ubahstat(self)
+                self.icon = "bookmark"

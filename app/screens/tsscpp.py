@@ -3,37 +3,45 @@ from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.app import MDApp
 from kivy.lang import Builder
 from kivy.clock import Clock
-import json, os
+import json
 
-Builder.load_file("app/ui/coursecpp.kv")
-Builder.load_file("app/ui/course/c++/pengenalan/course_i.kv")
-Builder.load_file("app/ui/course/c++/pengenalan/course_ii.kv")
-Builder.load_file("app/ui/course/c++/pengenalan/course_iii.kv")
-Builder.load_file("app/ui/course/c++/pengenalan/course_iv.kv")
-Builder.load_file("app/ui/course/c++/pengenalan/course_v.kv")
-Builder.load_file("app/ui/course/c++/pengenalan/task_i.kv")
-Builder.load_file("app/ui/course/c++/pengenalan/task_ii.kv")
-Builder.load_file("app/ui/course/c++/pengenalan/task_iii.kv")
-Builder.load_file("app/ui/course/c++/pengenalan/task_iv.kv")
-Builder.load_file("app/ui/course/c++/pengenalan/task_v.kv")
+Builder.load_file("app/ui/tsscpp.kv")
+Builder.load_file("app/ui/course/c++/tessoal/soal_i.kv")
+Builder.load_file("app/ui/course/c++/tessoal/soal_ii.kv")
+Builder.load_file("app/ui/course/c++/tessoal/soal_iii.kv")
+Builder.load_file("app/ui/course/c++/tessoal/soal_iv.kv")
+Builder.load_file("app/ui/course/c++/tessoal/soal_v.kv")
 
-class CourseCpp(MDScreen):
+class TssCpp(MDScreen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         Clock.schedule_once(self.load_screen)
         self.user_answer = {}
+    
+    def on_enter(self):
+        self.waktu = 25
+        self.ids.timer_label.text = f"sisa {self.waktu}"
+        self.event = Clock.schedule_interval(self.update_timer, 1)
+    
+    def update_timer(self, dt):
+        self.waktu -= 1
+        if self.waktu >= 0:
+            self.ids.timer_label.text = f"sisa {self.waktu}"
+        else:
+            Clock.unschedule(self.event)
+            self.timer_selesai()
+            
+    def timer_selesai(self):
+        self.ids.timer_label.text = "Waktu Habis!"
+        # Contoh: Panggil fungsi dari App
+        self.show_score()
         
     def load_screen(self, dt):
-        self.ids.screen_manager.add_widget(CourseScreen_i(name="course_i"))
-        self.ids.screen_manager.add_widget(CourseScreen_ii(name="course_ii"))
-        self.ids.screen_manager.add_widget(CourseScreen_iii(name="course_iii"))
-        self.ids.screen_manager.add_widget(CourseScreen_iv(name="course_iv"))
-        self.ids.screen_manager.add_widget(CourseScreen_v(name="course_v"))
-        self.ids.screen_manager.add_widget(TaskScreen_i(name="task_i"))
-        self.ids.screen_manager.add_widget(TaskScreen_ii(name="task_ii"))
-        self.ids.screen_manager.add_widget(TaskScreen_iii(name="task_iii"))
-        self.ids.screen_manager.add_widget(TaskScreen_iv(name="task_iv"))
-        self.ids.screen_manager.add_widget(TaskScreen_v(name="task_v"))
+        self.ids.screen_manager.add_widget(Soal_i(name="soal_i"))
+        self.ids.screen_manager.add_widget(Soal_ii(name="soal_ii"))
+        self.ids.screen_manager.add_widget(Soal_iii(name="soal_iii"))
+        self.ids.screen_manager.add_widget(Soal_iv(name="soal_iv"))
+        self.ids.screen_manager.add_widget(Soal_v(name="soal_v"))
         
         
     def select_one(self, selected_btn):
@@ -51,11 +59,11 @@ class CourseCpp(MDScreen):
             # Simpan jawaban: ambil nama screen dan nilai benar/salah
             current_screen = self.ids.screen_manager.current  # misalnya: "task_i"
             self.answer_keys = {
-                "task_i": "Mendeklarasikan pustaka",
-                "task_ii": "Mengakhiri program dengan status sukses",
-                "task_iii": "float",
-                "task_iv": "Mengambil input dari pengguna",
-                "task_v": "=="
+                "soal_i": "Hello, World!",
+                "soal_ii": "Hasil: 8",
+                "soal_iii": "15",
+                "soal_iv": "Modulus: 1",
+                "soal_v": "Nilai: 1"
             }
             # Anggap jawaban yang benar adalah "==", ubah sesuai kebutuhan
             is_correct = selected_btn.custext == self.answer_keys.get(current_screen, "")
@@ -79,14 +87,15 @@ class CourseCpp(MDScreen):
         score_screen.ids.score_label.text = f"Skor Anda: {skor}%"
         # Pindah ke screen skor
         MDApp.get_running_app().root.current = "scorecourse"
-
+        
+        
     def markdone(self):
         # Buka dan muat data JSON
         with open("data/session.json", "r") as file:
             data = json.load(file)
         
         # Tambahkan key baru
-        data["pengenalancpp"] = True
+        data["teskemampuanncpp"] = True
         data["task"] = data.get("task", 0) + 1
         
         # Simpan kembali ke file
@@ -96,23 +105,11 @@ class CourseCpp(MDScreen):
     def verif(self):
         with open("data/session.json", "r") as file:
             data = json.load(file)
-            done = data.get("pengenalancpp", False)
+            done = data.get("teskemampuanncpp", False)
         return done
-    
-    
-from kivy.properties import StringProperty
-from kivymd.uix.button import MDIconButton
-
-class CustomIconButton(MDIconButton):
-    custom_key = StringProperty("")
-
-class CourseScreen_i(MDScreen): pass
-class CourseScreen_ii(MDScreen): pass
-class CourseScreen_iii(MDScreen): pass
-class CourseScreen_iv(MDScreen): pass
-class CourseScreen_v(MDScreen): pass
-class TaskScreen_i(MDScreen): pass
-class TaskScreen_ii(MDScreen): pass
-class TaskScreen_iii(MDScreen): pass
-class TaskScreen_iv(MDScreen): pass
-class TaskScreen_v(MDScreen): pass
+        
+class Soal_i(MDScreen): pass
+class Soal_ii(MDScreen): pass
+class Soal_iii(MDScreen): pass
+class Soal_iv(MDScreen): pass
+class Soal_v(MDScreen): pass
